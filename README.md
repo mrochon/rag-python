@@ -1,13 +1,12 @@
 # My Py environment
 Based on [https://docs.github.com/en/codespaces/...](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces)
 
-
-## Export setup
-
 ## Setup
-
+pip install python-dotenv
+pip install openai
+pip install langchain
+pip install langchain-openai
 pip install atlassian-python-api
-pip install Pillow
 pip install pytesseract Pillow
 
 
@@ -23,3 +22,4 @@ Add tessarc PATh to PATH env variable
 pip install num2words matplotlib plotly scipy scikit-learn pandas tiktoken
 
 pip install python-dotenv
+pip install lxml
