@@ -21,3 +21,4 @@ for doc in docs:
     print("Metadata id:", doc.metadata["id"])
     print("      title:", doc.metadata["title"])
     print("     source:", doc.metadata["source"])
+    

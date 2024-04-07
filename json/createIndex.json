@@ -1,0 +1,102 @@
+{
+    "name": "documentix",
+    "fields": [
+        {
+            "name": "id",
+            "type": "Edm.String",
+            "key": true,
+            "searchable": false
+        },
+        {
+            "name": "uri",
+            "type": "Edm.String",
+            "filterable": false,
+            "sortable": false,
+            "facetable": false
+        },
+        {
+            "name": "title",
+            "type": "Edm.String",
+            "filterable": false,
+            "sortable": false,
+            "facetable": false
+          },
+        {
+            "name": "content",
+            "type": "Edm.String",
+            "searchable": true,            
+            "filterable": false,
+            "sortable": false,
+            "facetable": false
+          },
+        {
+            "name": "contentEmbedding",
+            "type": "Collection(Edm.Single)",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "synonymMaps": [],
+            "dimensions": 1536,
+            "vectorSearchProfile": "myHnswProfile"
+        }
+    ],
+    "corsOptions": {
+        "allowedOrigins": [
+          "tempuri.org"
+        ],
+        "maxAgeInSeconds": 60
+    },
+    "similarity": {
+        "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
+        "b": 0.5,
+        "k1": 1.3
+    },    
+    "semantic": {
+        "configurations": [
+            {
+                "name": "semanticDocs",
+                "prioritizedFields": {
+                    "titleField": {
+                        "fieldName": "title"
+                    },
+                    "prioritizedContentFields": [
+                        {
+                        "fieldName": "content"
+                        }
+                    ],
+                    "prioritizedKeywordsFields": [
+                    ]
+                }
+            }
+        ]
+    },
+    "vectorSearch": {
+        "profiles": [
+        {
+            "name": "myHnswProfile",
+            "algorithm": "myHnsw"
+        },
+        {
+            "name": "myAlgorithm",
+            "algorithm": "myExhaustive"
+        }
+        ],
+        "algorithms": [
+        {
+            "name": "myHnsw",
+            "kind": "hnsw",
+            "hnswParameters": {
+            "m": 4,
+            "metric": "cosine"
+            }
+        },
+        {
+            "name": "myExhaustive",
+            "kind": "exhaustiveKnn",
+            "exhaustiveKnnParameters": {
+            "metric": "cosine"
+            }
+        }
+    ]
+  }
+}
