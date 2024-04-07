@@ -34,7 +34,7 @@
             "type": "Collection(Edm.Single)",
             "searchable": true,
             "filterable": false,
-            "retrievable": true,
+            "retrievable": false,
             "synonymMaps": [],
             "dimensions": 1536,
             "vectorSearchProfile": "myHnswProfile"

@@ -1,46 +1,65 @@
-# My Py environment
-Based on [https://docs.github.com/en/codespaces/...](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces)
+# Document indexing
+Use local pythion environment (@command:python.createEnvironment).
 
-## Setup
+Could be done as [Git Codespace except]((https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces) Tesserac requires own .exe, would need a new image.
+
+## Environment Setup
+
+```
 pip install python-dotenv
 pip install openai
 pip install langchain
 pip install langchain-openai
 pip install atlassian-python-api
+```
 
-https://stackoverflow.com/questions/50951955/pytesseract-tesseractnotfound-error-tesseract-is-not-installed-or-its-not-i
-https://stackoverflow.com/questions/50655738/how-do-i-resolve-a-tesseractnotfounderror
+Install Tesseract:
 
-https://github.com/UB-Mannheim/tesseract/wiki
+[Error explanation](https://stackoverflow.com/questions/50951955/pytesseract-tesseractnotfound-error-tesseract-is-not-installed-or-its-not-i)
+and [this](https://stackoverflow.com/questions/50655738/how-do-i-resolve-a-tesseractnotfounderror)
+
+[Install app](https://github.com/UB-Mannheim/tesseract/wiki)
+Make sure to add this to PATH env variable
+```
 C:\Users\mrochon\AppData\Local\Programs\Tesseract-OCR
+```
 
+```
 pip install pytesseract Pillow
 pip install pytesseract
-Add tessarc PATh to PATH env variable
+```
 
+Is this needed?
 pip install num2words matplotlib plotly scipy scikit-learn pandas tiktoken
 
+```
 pip install python-dotenv
 pip install lxml
+```
 
-## Index upload
+For REST and OAuth2
+```
+pip install request
+pip install requests_oauthlib
+```
 
-### Create
+For text chunking
+```
+pip install langchain_experimental
+```
 
-https://learn.microsoft.com/en-us/rest/api/searchservice/indexes/create?view=rest-searchservice-2023-11-01&tabs=HTTP
+## Entra Id
 
-### Upload
+1. Register an application to work with Search: apId and secret
+2. In Search, use IAM to assign Index Contributor role to the above application
 
-See https://learn.microsoft.com/en-us/rest/api/searchservice/documents/?view=rest-searchservice-2023-11-01&tabs=HTTP
+## Code examples
 
-## Curl
+| Source | Comments |
+| --- | --- |
+| readDocs.py | Reads data from Confluence |
+| chunkText.py | Break text into chunks ([using semantic chunking](https://python.langchain.com/docs/modules/data_connection/document_transformers/semantic-chunker/)) |
+| vectorize.py | Create embedding vectors from text |
+| createIndex.py | Create Azure Search index [using REST call](https://learn.microsoft.com/en-us/rest/api/searchservice/indexes/create?view=rest-searchservice-2023-11-01&tabs=HTTP)|
+| tbd | Upload documents to [Azure Search using REST](https://learn.microsoft.com/en-us/rest/api/searchservice/documents/?view=rest-searchservice-2023-11-01&tabs=HTTP) | 
 
-use curl --netrc-file .netrc http://example.com to keep secrets, .netrc format:
-
-machine example.com
-login daniel
-password qwerty
-
-curl -i -X POST host:port/post-file \
-  -H "Content-Type: text/xml" \
-  --data-binary "@path/to/file"
