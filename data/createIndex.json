@@ -86,15 +86,15 @@
             "name": "myHnsw",
             "kind": "hnsw",
             "hnswParameters": {
-            "m": 4,
-            "metric": "cosine"
+                "m": 4,
+                "metric": "cosine"
             }
         },
         {
             "name": "myExhaustive",
             "kind": "exhaustiveKnn",
             "exhaustiveKnnParameters": {
-            "metric": "cosine"
+                "metric": "cosine"
             }
         }
     ]
