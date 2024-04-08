@@ -34,6 +34,7 @@ for file in txt_files:
             }
             chunkNo += 1
             print(outDoc)
+            print(f"Content length: {len(chunk.page_content)}")
 
 
     
