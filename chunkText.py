@@ -1,6 +1,7 @@
 import os
 import dotenv
 import uuid
+import tiktoken
 
 dotenv.load_dotenv()
 
@@ -13,6 +14,12 @@ embeddings = AzureOpenAIEmbeddings(
     azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT"),
     api_key= os.environ.get("AZURE_OPENAI_API_KEY")
 )
+
+def num_tokens_from_string(string: str, encoding_name: str) -> int:
+    encoding = tiktoken.encoding_for_model(encoding_name)
+    num_tokens = len(encoding.encode(string))
+    return num_tokens
+
 dir = os.path.join(os.getcwd(), "data")
 files = os.listdir(dir)
 txt_files = [file for file in files if file.lower().endswith(".txt")]
@@ -26,6 +33,7 @@ for file in txt_files:
         id = str(uuid.uuid4())
         chunkNo = 0
         for chunk in chunks:
+            # TODO: vectorize content
             outDoc = {
                 "id": id,
                 "source": f"{dir}/{file}",
@@ -35,6 +43,8 @@ for file in txt_files:
             chunkNo += 1
             print(outDoc)
             print(f"Content length: {len(chunk.page_content)}")
+            tokens = num_tokens_from_string(chunk.page_content, "gpt-3.5-turbo")
+            print(f"Tokens: {tokens}")
 
 
     
