@@ -33,13 +33,12 @@ pip install atlassian-python-api
 pip install uuid
 ```
 
-Install Tesseract:
+**Install Tesseract for Confluence documenting reading**
 
-[Error explanation](https://stackoverflow.com/questions/50951955/pytesseract-tesseractnotfound-error-tesseract-is-not-installed-or-its-not-i)
-and [this](https://stackoverflow.com/questions/50655738/how-do-i-resolve-a-tesseractnotfounderror)
+[Error explanation](https://stackoverflow.com/questions/50951955/pytesseract-tesseractnotfound-error-tesseract-is-not-installed-or-its-not-i) and [this](https://stackoverflow.com/questions/50655738/how-do-i-resolve-a-tesseractnotfounderror)
 
-[Install app](https://github.com/UB-Mannheim/tesseract/wiki)
-Make sure to add this to PATH env variable
+[Install .exe for Confluence data reading](https://github.com/UB-Mannheim/tesseract/wiki)
+*Make sure to add this to PATH env variable*
 ```
 C:\Users\mrochon\AppData\Local\Programs\Tesseract-OCR
 ```
@@ -84,3 +83,9 @@ pip install langchain-text-splitters
 | [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create Azure Search index [using REST call](https://learn.microsoft.com/en-us/rest/api/searchservice/indexes/create?view=rest-searchservice-2023-11-01&tabs=HTTP)|
 | tbd | Upload documents to [Azure Search using REST](https://learn.microsoft.com/en-us/rest/api/searchservice/documents/?view=rest-searchservice-2023-11-01&tabs=HTTP) | 
 
+
+## References:
+
+1. [Chunking strategies](https://safjan.com/from-fixed-size-to-nlp-chunking-a-deep-dive-into-text-chunking-techniques/#google_vignette)
+2. [Chunking strategies](https://medium.com/aimonks/chunking-strategies-for-more-effective-rag-through-llm-63ae7b046b46)
+3. 
