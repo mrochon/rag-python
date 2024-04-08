@@ -11,6 +11,7 @@ pip install openai
 pip install langchain
 pip install langchain-openai
 pip install atlassian-python-api
+pip install uuid
 ```
 
 Install Tesseract:
