@@ -5,6 +5,25 @@ Could be done as [Git Codespace except](https://docs.github.com/en/codespaces/se
 
 ## Environment Setup
 
+### Variables
+
+Exaple:
+
+```
+OPENAI_API_VERSION="2023-05-15"
+AZURE_OPENAI_ENDPOINT=https://<your ep>.openai.azure.com/
+AZURE_OPENAI_API_KEY=...
+EMBEDDINGS_MODEL=<embedding deployment name>
+CONF_USER_NAME="<Confluence user name>"
+CONF_API_KEY=<pwd>>
+TENANT_ID="<Entra tenant id>"
+CLIENT_ID="<Confidential client id>"
+CLIENT_SECRET="<Confidential client secret>"
+SEARCH_SERVICE_NAME="<Search service name>"
+SEARCH_API_KEY="<Search API key>"
+```
+### PIP Installs
+
 ```
 pip install python-dotenv
 pip install openai
@@ -47,6 +66,7 @@ pip install requests_oauthlib
 For text chunking
 ```
 pip install langchain_experimental
+pip install langchain-text-splitters
 ```
 
 ## Entra Id

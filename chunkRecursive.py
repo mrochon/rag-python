@@ -1,19 +1,10 @@
+# See https://python.langchain.com/docs/modules/data_connection/document_transformers/recursive_text_splitter/
+
 import os
-import dotenv
 import uuid
 import tiktoken
 
-dotenv.load_dotenv()
-
-from langchain_experimental.text_splitter import SemanticChunker
-from langchain_openai import AzureOpenAIEmbeddings
-
-embeddings = AzureOpenAIEmbeddings(
-    azure_deployment=os.environ.get("EMBEDDINGS_MODEL", "text-embedding-ada-002"),
-    openai_api_version=os.environ.get("OPENAI_API_VERSION", "2021-08-04"),
-    azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT"),
-    api_key= os.environ.get("AZURE_OPENAI_API_KEY")
-)
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 def num_tokens_from_string(string: str, encoding_name: str) -> int:
     encoding = tiktoken.encoding_for_model(encoding_name)
@@ -23,8 +14,12 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
 dir = os.path.join(os.getcwd(), "data")
 files = os.listdir(dir)
 txt_files = [file for file in files if file.lower().endswith(".txt")]
-text_splitter = SemanticChunker(
-    embeddings, breakpoint_threshold_type="percentile"
+text_splitter = RecursiveCharacterTextSplitter(
+    # Set a really small chunk size, just to show.
+    chunk_size=1000,
+    chunk_overlap=20,
+    length_function=len,
+    is_separator_regex=False,
 )
 for file in txt_files:
     with open(f"{dir}/{file}", encoding='utf-8') as f:
