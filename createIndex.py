@@ -1,9 +1,11 @@
 import os
 import dotenv
 import requests
+import json
 
 dotenv.load_dotenv()
 
+INDEX_NAME=os.environ.get("INDEX_NAME")
 TENANT_ID = os.environ.get("TENANT_ID")
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
@@ -14,7 +16,8 @@ rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/indexes?api-versio
 
 file_path = os.path.join(os.getcwd(), "data/createIndex.json")
 with open(file_path, "r") as file:
-    createIndex= file.read()
+    createIndex= json.load(file)
+    createIndex["name"] = INDEX_NAME
 
 # from requests_oauthlib import OAuth2Session
 # oauth_session = OAuth2Session(client_id=CLIENT_ID)
@@ -27,7 +30,7 @@ with open(file_path, "r") as file:
 
 headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
 
-response = requests.post(url=rest_url, headers=headers, data=createIndex)
+response = requests.post(url=rest_url, headers=headers, json=createIndex)
 
 if response.status_code == 201:
     user_data = response.json()

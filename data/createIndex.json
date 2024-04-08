@@ -1,17 +1,30 @@
 {
-    "name": "documentix",
+    "name": "???",
     "fields": [
         {
             "name": "id",
             "type": "Edm.String",
             "key": true,
-            "searchable": false
+            "searchable": false,
+            "retrievable": true,
+            "filterable": true,
+            "sortable": false,
+            "facetable": false
         },
         {
             "name": "uri",
             "type": "Edm.String",
             "filterable": false,
             "sortable": false,
+            "facetable": false,
+            "retrievable": true
+        },
+        {
+            "name": "chunkNo",
+            "type": "Edm.String",
+            "filterable": false,
+            "sortable": true,
+            "retrievable": true,
             "facetable": false
         },
         {
@@ -19,16 +32,26 @@
             "type": "Edm.String",
             "filterable": false,
             "sortable": false,
+            "retrievable": true,
             "facetable": false
-          },
+        },
         {
             "name": "content",
             "type": "Edm.String",
-            "searchable": true,            
+            "searchable": true,    
+            "retrievable": true,        
             "filterable": false,
             "sortable": false,
             "facetable": false
-          },
+        },
+        {
+            "name": "category",
+            "type": "Edm.String",
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": true
+        },
         {
             "name": "contentEmbedding",
             "type": "Collection(Edm.Single)",
