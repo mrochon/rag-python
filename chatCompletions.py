@@ -20,7 +20,6 @@ with open(file_path, "r") as file:
 #chatCompletion["messages"].append({"role": "system", "content": "You are a helpful assistant answering questions about creativity. Use Azure Search data whenever possible."})
 chatCompletion["messages"].append({"role": "user", "content": "What are the two modes people function in?"})
 
-
 chatCompletion["data_sources"] = [
     {
         "type": "azure_search",
@@ -52,6 +51,8 @@ while True:
         #print(json.dumps(user_data, indent=2))
         for choice in user_data["choices"]:
             print(f"{choice['message']['role']}: {choice['message']['content']}")
+            for citation in choice["message"]["context"]["citations"]:
+                print(f"{citation["url"]}-{citation["chunk_id"]}: {citation['content']}")
             chatCompletion["messages"].append({"role": "assistant", "content": choice['message']['content']})
     else:
         print(f"Error fetching user data: {response.status_code} - {response.text}")
