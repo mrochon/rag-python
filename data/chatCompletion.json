@@ -8,5 +8,7 @@
     "frequency_penalty": 0,
     "logit_bias": {},
     "user": "user-1234",
-    "messages": []
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant answering questions about creativity. Use Azure Search data whenever possible."}
+    ]
   }
