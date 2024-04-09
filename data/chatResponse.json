@@ -1,0 +1,64 @@
+{
+    "choices": [
+        {
+            "content_filter_results": {
+                "hate": {
+                    "filtered": false,
+                    "severity": "safe"
+                },
+                "self_harm": {
+                    "filtered": false,
+                    "severity": "safe"
+                },
+                "sexual": {
+                    "filtered": false,
+                    "severity": "safe"
+                },
+                "violence": {
+                    "filtered": false,
+                    "severity": "safe"
+                }
+            },
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+                "content": "The average distance from the Earth to the Moon is approximately 1.28 light-seconds.",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1712637073,
+    "id": "chatcmpl-9BxQXcOSEbXEtWGJQ564WPFT7d7TS",
+    "model": "gpt-35-turbo-16k",
+    "object": "chat.completion",
+    "prompt_filter_results": [
+        {
+            "prompt_index": 0,
+            "content_filter_results": {
+                "hate": {
+                    "filtered": false,
+                    "severity": "safe"
+                },
+                "self_harm": {
+                    "filtered": false,
+                    "severity": "safe"
+                },
+                "sexual": {
+                    "filtered": false,
+                    "severity": "safe"
+                },
+                "violence": {
+                    "filtered": false,
+                    "severity": "safe"
+                }
+            }
+        }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+        "completion_tokens": 19,
+        "prompt_tokens": 61,
+        "total_tokens": 80
+    }
+}

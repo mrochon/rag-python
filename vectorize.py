@@ -8,8 +8,8 @@ dotenv.load_dotenv()
 embeddings = AzureOpenAIEmbeddings(
     azure_deployment=os.environ.get("EMBEDDINGS_MODEL", "text-embedding-ada-002"),
     openai_api_version=os.environ.get("OPENAI_API_VERSION", "2021-08-04"),
-    azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT"),
-    api_key= os.environ.get("AZURE_OPENAI_API_KEY")
+    azure_endpoint = os.environ.get("OPENAI_ENDPOINT"),
+    api_key= os.environ.get("OPENAI_API_KEY")
 )
 
 text = "this is a test document"

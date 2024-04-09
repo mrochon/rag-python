@@ -12,8 +12,9 @@ Exaple:
 ```
 INDEX_NAME=<name of Azure Search Index>
 OPENAI_API_VERSION="2023-05-15"
-AZURE_OPENAI_ENDPOINT=https://<your ep>.openai.azure.com/
-AZURE_OPENAI_API_KEY=...
+OPENAI_ENDPOINT=https://<your ep>.openai.azure.com/
+GTP_DEPLOYMENT="gtp-35-turbo-16k"
+OPENAI_API_KEY=...
 EMBEDDINGS_MODEL=<embedding deployment name>
 CONF_USER_NAME="<Confluence user name>"
 CONF_API_KEY=<pwd>>
@@ -83,7 +84,7 @@ pip install langchain-text-splitters
 | [vectorize.py](https://github.com/mrochon/python/blob/main/vectorize.py) | Create embedding vectors from text |
 | [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create Azure Search index [using REST call](https://learn.microsoft.com/en-us/rest/api/searchservice/indexes/create?view=rest-searchservice-2023-11-01&tabs=HTTP)|
 | [loadSampleDocs.py](https://github.com/mrochon/python/blob/main/loadSampleDocs.py) | Load some docs to Azure Index (chunk, vectorize, upload) [using REST call](hhttps://learn.microsoft.com/en-us/rest/api/searchservice/documents/?view=rest-searchservice-2023-11-01&tabs=HTTP)|
-| tbd | Upload documents to [Azure Search using REST](https://learn.microsoft.com/en-us/rest/api/searchservice/documents/?view=rest-searchservice-2023-11-01&tabs=HTTP) | 
+| [chatCompletion.py](https://github.com/mrochon/python/blob/main/chatCompletion.py) | Simple REST based chat completion | 
 
 
 ## References:
