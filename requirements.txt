@@ -1,10 +1,13 @@
-pip install python-dotenv
-pip install openai
-pip install langchain
-pip install langchain-openai
-pip install atlassian-python-api
-pip install uuid
-
-
-PyPDF2
+python-dotenv
+openai
+langchain
+langchain-openai
+atlassian-python-api
+uuid
+tiktoken
+lxml
+request
+requests_oauthlib
+langchain_experimental
+langchain-text-splitters
 pypdf

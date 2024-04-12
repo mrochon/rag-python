@@ -30,14 +30,14 @@ dir = os.path.join(os.getcwd(), "data")
 files = os.listdir(dir)
 pdf_files = [file for file in files if file.lower().endswith(".pdf")]
 #from langchain_community.document_loaders import PyPDFLoader
-from PyPDF2 import PdfReader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from pypdf import PdfReader
 def extract_pdf_text(file_path):
     pdf_file = PdfReader(file_path)
     text_data = ''
     for pg in pdf_file.pages:
         text_data += pg.extract_text()
     return text_data
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=500,
     chunk_overlap=20,
@@ -47,13 +47,12 @@ text_splitter = RecursiveCharacterTextSplitter(
 docCount = 0
 chunkCount = 0
 for file in pdf_files:
-    documentsToLoad = list()
-    #loader = PyPDFLoader(f"{dir}/{file}")
-    #chunks = loader.load_and_split()
     pdf_text = extract_pdf_text(f"{dir}/{file}")
+    docCount += 1    
     chunks = text_splitter.create_documents([pdf_text])    
     chunkVectors = embeddings.embed_documents([chunk.page_content for chunk in chunks])
     chunkNo = 0
+    payload = list()
     for chunk in chunks:
         outDoc = {
             "@search.action": "upload",
@@ -65,21 +64,21 @@ for file in pdf_files:
         }
         tokens = num_tokens_from_string(chunk.page_content, "gpt-3.5-turbo")
         print(f"{dir}/{file}-{chunkNo} - {len(chunk.page_content)} - {tokens}")
-        documentsToLoad.append(outDoc)
+        payload.append(outDoc)
         chunkNo += 1
-        headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
-        payload = { "value": documentsToLoad }
-        #print(json.dumps(payload))
-        response = requests.post(url=rest_url, headers=headers, json=payload)
-        if response.status_code == 200:
-            user_data = response.json()
-            for resp in user_data["value"]:
-                print(f"{resp["key"]} - {resp["statusCode"]} - {resp["status"]}")
-            docCount += 1
-            chunkCount += chunkNo
-        else:
-            print(f"Error loading data: {response.status_code} - {response.text}")
-print(f"Documents: {docCount} - chunks: {chunkCount}")
+    headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
+    payload = { "value": payload }
+    #print(json.dumps(payload))
+    response = requests.post(url=rest_url, headers=headers, json=payload)
+    if response.status_code == 200:
+        user_data = response.json()
+        for resp in user_data["value"]:
+            print(f"{resp["key"]} - {resp["statusCode"]} - {resp["status"]}")
+            chunkCount += 1
+    else:
+        print(f"Error creating index document: {response.status_code} - {response.text}")
+
+print(f"Loaded {docCount} documents as {chunkCount} chunks")
 
         
 

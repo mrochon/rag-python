@@ -26,17 +26,14 @@ SEARCH_API_KEY="<Search API key>"
 ```
 ### PIP Installs
 
-```
-pip install python-dotenv
-pip install openai
-pip install langchain
-pip install langchain-openai
-pip install atlassian-python-api
-pip install uuid
-```
+See *requirements.txt*
 
-**Install Tesseract for Confluence documenting reading**
+```
+pip install -r requirmeents.txt
+```
+### Install Tesseract for Confluence documenting reading**
 
+If planning to read Confluence data:
 [Error explanation](https://stackoverflow.com/questions/50951955/pytesseract-tesseractnotfound-error-tesseract-is-not-installed-or-its-not-i) and [this](https://stackoverflow.com/questions/50655738/how-do-i-resolve-a-tesseractnotfounderror)
 
 [Install .exe for Confluence data reading](https://github.com/UB-Mannheim/tesseract/wiki)
@@ -50,27 +47,9 @@ pip install pytesseract Pillow
 pip install pytesseract
 ```
 
-Is this needed?
-pip install num2words matplotlib plotly scipy scikit-learn pandas tiktoken
-
-```
-pip install python-dotenv
-pip install lxml
-```
-
-For REST and OAuth2
-```
-pip install request
-pip install requests_oauthlib
-```
-
-For text chunking
-```
-pip install langchain_experimental
-pip install langchain-text-splitters
-```
-
 ## Entra Id
+
+For Oauth2 access
 
 1. Register an application to work with Search: apId and secret
 2. In Search, use IAM to assign Index Contributor role to the above application
