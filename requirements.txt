@@ -1,0 +1,10 @@
+pip install python-dotenv
+pip install openai
+pip install langchain
+pip install langchain-openai
+pip install atlassian-python-api
+pip install uuid
+
+
+PyPDF2
+pypdf
