@@ -12,17 +12,17 @@ INDEX_NAME=os.environ.get("INDEX_NAME")
 SEARCH_SERVICE_NAME = os.environ.get("SEARCH_SERVICE_NAME")
 SEARCH_API_KEY=os.environ.get("SEARCH_API_KEY")
 
+print(f"OPENAI_ENDPOINT: {OPENAI_API_KEY}")
+
 file_path = os.path.join(os.getcwd(), "data/chatCompletion.json")
 with open(file_path, "r") as file:
     chatCompletion= json.load(file)
 
 
-#chatCompletion["messages"].append({"role": "system", "content": "You are a helpful assistant answering questions about creativity. Use Azure Search data whenever possible."})
-chatCompletion["messages"].append({"role": "user", "content": "What are the two modes people function in?"})
-
+chatCompletion["messages"].append({"role": "system", "content": "You are a helpful assistant answering questions about 3D printing. you have access to a search index. You can only issue search queries to the search index and use the information to answer the user's question and provide references ."})
 chatCompletion["data_sources"] = [
     {
-        "type": "azure_search",
+        "type": "azure_search", 
         "parameters": {
             "authentication": {
                 "type": "api_key",
@@ -30,7 +30,7 @@ chatCompletion["data_sources"] = [
             },
             "endpoint": f"https://{SEARCH_SERVICE_NAME}.search.windows.net",
             "index_name": INDEX_NAME,
-            "role_information": "Information about the role of the user in the conversation. For example, if the user is a student, the role information could include the student's grade level and subjects of interest."
+            "role_information": "Reference manual for the Longer 3D printer."
         }
     }
 ]
@@ -65,7 +65,6 @@ headers = {"api-key": OPENAI_API_KEY, "Content-Type": "application/json"}
 
 while True:
     user_input = input("Enter your message (enter 'q' to quit): ")
-    #example: What are the two modes people function in?
     if user_input == 'q':
         break
     chatCompletion["messages"].append({"role": "user", "content": user_input})
@@ -78,7 +77,6 @@ while True:
             for citation in choice["message"]["context"]["citations"]:
                 print(f"{citation["url"]}-{citation["chunk_id"]}")
                 #print(f"{citation['content']}")
-                
             chatCompletion["messages"].append({"role": "assistant", "content": choice['message']['content']})
     else:
         print(f"Error fetching user data: {response.status_code} - {response.text}")

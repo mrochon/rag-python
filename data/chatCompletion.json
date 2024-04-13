@@ -1,6 +1,6 @@
 {
     "temperature": 0.8,
-    "top_p": 0.5,
+    "top_p": 0.1,
     "stream": false,
     "stop": null,
     "max_tokens": 4096,
