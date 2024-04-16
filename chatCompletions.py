@@ -12,8 +12,6 @@ INDEX_NAME=os.environ.get("INDEX_NAME")
 SEARCH_SERVICE_NAME = os.environ.get("SEARCH_SERVICE_NAME")
 SEARCH_API_KEY=os.environ.get("SEARCH_API_KEY")
 
-print(f"OPENAI_ENDPOINT: {OPENAI_API_KEY}")
-
 file_path = os.path.join(os.getcwd(), "data/chatCompletion.json")
 with open(file_path, "r") as file:
     chatCompletion= json.load(file)
