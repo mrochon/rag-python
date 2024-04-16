@@ -25,10 +25,20 @@ if response.status_code == 200:
     access_token = token_data.get("access_token")
 else:
     sys.exit(f"Error requesting token. Status code: {response.status_code}")
-    
 headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
 
 #headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
+
+variables = list()
+file_path = os.path.join(os.getcwd(), ".env")
+with open(file_path, "r") as file:
+    for line in file:
+        splitIndex = line.find("=")
+        key = line[:splitIndex]
+        value = line[splitIndex+1:]
+        value = value.strip("\n\"")
+        #key, value = line.strip().split("=")
+        variables.append((key, value))
 
 def handleResponse(response):
     if response.status_code == 200 or response.status_code == 201:
@@ -38,31 +48,28 @@ def handleResponse(response):
     else:
         sys.exit(f"Error fetching user data: {response.status_code} - {response.text}")
                  
-def getPayload(objectName):
-    file_path = os.path.join(os.getcwd(), f"debug/{objectName}.json")
+def createObject(objectName):
+    print(f"Creating {objectName}")
+    if objectName == "index":
+        plural = "indexes"
+    else:
+        plural = f"{objectName}s"
+    file_path = os.path.join(os.getcwd(), f"api-payload/{objectName}.json")
     with open(file_path, "r") as file:
-        payload= json.load(file)
-    return payload
+        payload= file.read()
+    #print(json.dumps(createIndex, indent=2))
+    for key, value in variables:
+        payload = payload.replace(key, value)   
+    rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/{plural}?api-version=2024-03-01-preview"   
+    response = requests.post(url=rest_url, headers=headers, json=json.loads(payload))
+    handleResponse(response)    
 
 # Note: updating an index does not delete existing index data. Only way to delete the data is to delete the index
-print("Creating index")
-createIndex = getPayload('index')   
-rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/indexes?api-version=2024-03-01-preview"    
-#print(json.dumps(createIndex, indent=2))
-response = requests.post(url=rest_url, headers=headers, json=createIndex)
-handleResponse(response)
 
-print("Creating skillset")
-createSkillset = getPayload('skillset')
-rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/skillsets?api-version=2024-03-01-preview"    
-response = requests.post(url=rest_url, headers=headers, json=createSkillset)
-handleResponse(response)
+createObject('index')   
+createObject('skillset')
+createObject('indexer')
 
-print("Creating indexer")
-indexer = getPayload('indexer')
-rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/indexers?api-version=2024-03-01-preview"    
-response = requests.post(url=rest_url, headers=headers, json=indexer)
-handleResponse(response)
 
 
 

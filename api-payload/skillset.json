@@ -87,7 +87,7 @@
             "sourceContext": "/document/chunks/*",
             "mappings": [
                 {
-                    "name": "path",
+                    "name": "uri",
                     "source": "/document/metadata_storage_path"
                 },
                 {
@@ -111,7 +111,7 @@
         }
     ],
     "parameters": {
-        "projectionMode": "skipIndexingParentDocuments"
+        "projectionMode": "includeIndexingParentDocuments"
     }
   },  
   "cognitiveServices": {

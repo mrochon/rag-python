@@ -47,7 +47,7 @@
       "synonymMaps": []
     },
     {
-      "name": "path",
+      "name": "uri",
       "type": "Edm.String",
       "searchable": false,
       "filterable": false,
@@ -218,7 +218,7 @@
         "name": "manuals-semantic-configuration",
         "prioritizedFields": {
           "titleField": {
-            "fieldName": "path"
+            "fieldName": "uri"
           },
           "prioritizedContentFields": [
             {

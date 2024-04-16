@@ -21,7 +21,7 @@
     "fieldMappings": [
       {
         "sourceFieldName": "metadata_storage_path",
-        "targetFieldName": "path",
+        "targetFieldName": "uri",
         "mappingFunction": {
           "name": "base64Encode",
           "parameters": null
