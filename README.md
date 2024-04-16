@@ -1,13 +1,24 @@
 # Document indexing
-Use local python environment (@command:python.createEnvironment).
 
-Could be done as [Git Codespace except](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces) Tesserac requires own .exe, would need a new image.
+## Purpose
+
+Create and populate Azure Search index with data from pdf files stored in blob storage. Provide simple chat interface to conduct q&a with OpenAI and Search to get answers to questions related to the stored documents.
+
+## Operation
+
+1. Create a datasource in Azure Search to read your pdfs from a blob container
+2. Register a confidential client app in Entra ID and give it Search Index Contributor permission
+2. Setup your py environment with this repo
+2. Execute createIndex.py to create an index, skillset and indexer
+3. Run chatCompletions.py to enter questions and received answers from OpenAI
+
+The skillset chunks the pdf docs into pages, hides some PII data, vectorizes the text content and uploads chunk to secondary index (document goes to primary).
 
 ## Environment Setup
 
 ### Variables
 
-Exaple:
+Following environment variables need to be created in the .env file:
 
 ```
 DATA_SOURCE_NAME="<anem of an existing Azure Search Data Source>"
@@ -49,24 +60,19 @@ pip install pytesseract Pillow
 pip install pytesseract
 ```
 
-## Entra Id
-
-For Oauth2 access
-
-1. Register an application to work with Search: apId and secret
-2. In Search, use IAM to assign Index Contributor role to the above application
-
 ## Code examples
 
 | Source | Comments |
 | --- | --- |
 | [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create new index, skillset and indexer | 
+| [chatCompletion.py](https://github.com/mrochon/python/blob/main/chatCompletion.py) | Simple REST based chat completion | 
+| ---other--- |  | 
 | [readDocs.py](https://github.com/mrochon/python/blob/main/readDocs.py) | Reads data from Confluence |
 | [chunkText.py](https://github.com/mrochon/python/blob/main/chunkText.py) | Break text into chunks ([using semantic chunking](https://python.langchain.com/docs/modules/data_connection/document_transformers/semantic-chunker/)) |
 | [vectorize.py](https://github.com/mrochon/python/blob/main/vectorize.py) | Create embedding vectors from text |
 | [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create Azure Search index [using REST call](https://learn.microsoft.com/en-us/rest/api/searchservice/indexes/create?view=rest-searchservice-2023-11-01&tabs=HTTP)|
 | [loadSampleDocs.py](https://github.com/mrochon/python/blob/main/loadSampleDocs.py) | Load some docs to Azure Index (chunk, vectorize, upload) [using REST call](hhttps://learn.microsoft.com/en-us/rest/api/searchservice/documents/?view=rest-searchservice-2023-11-01&tabs=HTTP)|
-| [chatCompletion.py](https://github.com/mrochon/python/blob/main/chatCompletion.py) | Simple REST based chat completion | 
+
 
 
 ## References:
@@ -74,3 +80,9 @@ For Oauth2 access
 1. [Krystian Safjan's Chunking strategies](https://safjan.com/from-fixed-size-to-nlp-chunking-a-deep-dive-into-text-chunking-techniques/#google_vignette)
 2. [Carlo C. Chunking strategies](https://medium.com/aimonks/chunking-strategies-for-more-effective-rag-through-llm-63ae7b046b46)
 3. [OpenAI REST API](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/cognitiveservices/data-plane/AzureOpenAI/inference/stable/2024-02-01/inference.json)
+
+## Environment
+
+Use local python environment (@command:python.createEnvironment).
+
+Could be done as [Git Codespace except](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces) Tesserac requires own .exe, would need a new image.
