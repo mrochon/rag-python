@@ -1,0 +1,17 @@
+{
+    "search": "any reasons for the company to refuse to honor the guarantee?",
+    "select": "title,chunk",
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "any reasons for the company to refuse to honor the guarantee?",
+        "k": 3,
+        "fields": "vector"
+      }
+    ],
+    "queryType": "semantic",
+    "semanticConfiguration": "manuals-semantic-configuration",
+    "captions": "extractive",
+    "answers": "extractive|count-3",
+    "queryLanguage": "en-US"
+  }

@@ -6,7 +6,7 @@ dotenv.load_dotenv()
 
 from langchain_community.document_loaders import ConfluenceLoader
 
-loader = ConfluenceLoader(url ="https://sysco-confluence.yellowdune-f7432194.eastus2.azurecontainerapps.io/", username=os.environ.get("CONF_USER_NAME"), api_key=os.environ.get("CONF_API_KEY"))
+loader = ConfluenceLoader(url ="https://sysco-confluence.yellowdune-f7432194.eastus2.azurecontainerapps.io/", username=os.environ.get("CONFLUENCE_USER_NAME"), api_key=os.environ.get("CONFLUENCE_API_KEY"))
 # Or see how to get token: https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html 
 # loader = ConfluenceLoader(url ="https://sysco-confluence.yellowdune-f7432194.eastus2.azurecontainerapps.io/", token="")
 docs = loader.load(

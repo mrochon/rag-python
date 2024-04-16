@@ -10,20 +10,22 @@ Could be done as [Git Codespace except](https://docs.github.com/en/codespaces/se
 Exaple:
 
 ```
+DATA_SOURCE_NAME="<anem of an existing Azure Search Data Source>"
 INDEX_NAME=<name of Azure Search Index>
-OPENAI_API_VERSION="2023-05-15"
+INDEXER_NAME="<name of an indexer to create>"
+SKILLSET_NAME="<name of a skillset to create>"
+SEARCH_SERVICE_NAME="<name of Azure Search Service>"
 OPENAI_ENDPOINT=https://<your ep>.openai.azure.com/
 GTP_DEPLOYMENT="gtp-35-turbo-16k"
-OPENAI_API_KEY=...
 EMBEDDINGS_MODEL=<embedding deployment name>
-CONF_USER_NAME="<Confluence user name>"
-CONF_API_KEY=<pwd>>
+OPENAI_API_KEY=...
+SEARCH_API_KEY="<Search API key>"
+AI_SERVICE_KEY="<API key for Azure Cognitive Service>"
 TENANT_ID="<Entra tenant id>"
 CLIENT_ID="<Confidential client id>"
 CLIENT_SECRET="<Confidential client secret>"
-SEARCH_SERVICE_NAME="<Search service name>"
-SEARCH_API_KEY="<Search API key>"
 ```
+
 ### PIP Installs
 
 See *requirements.txt*
@@ -58,6 +60,7 @@ For Oauth2 access
 
 | Source | Comments |
 | --- | --- |
+| [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create new index, skillset and indexer | 
 | [readDocs.py](https://github.com/mrochon/python/blob/main/readDocs.py) | Reads data from Confluence |
 | [chunkText.py](https://github.com/mrochon/python/blob/main/chunkText.py) | Break text into chunks ([using semantic chunking](https://python.langchain.com/docs/modules/data_connection/document_transformers/semantic-chunker/)) |
 | [vectorize.py](https://github.com/mrochon/python/blob/main/vectorize.py) | Create embedding vectors from text |

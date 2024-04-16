@@ -17,9 +17,11 @@ print(f"OPENAI_ENDPOINT: {OPENAI_API_KEY}")
 file_path = os.path.join(os.getcwd(), "data/chatCompletion.json")
 with open(file_path, "r") as file:
     chatCompletion= json.load(file)
+    file_path = os.path.join(os.getcwd(), "data/system-prompt.txt")
+with open(file_path, "r") as file:
+    sysPrompt= file.read()
 
-
-chatCompletion["messages"].append({"role": "system", "content": "You are a helpful assistant answering questions about 3D printing. you have access to a search index. You can only issue search queries to the search index and use the information to answer the user's question and provide references ."})
+chatCompletion["messages"].append({"role": "system", "content": sysPrompt })
 chatCompletion["data_sources"] = [
     {
         "type": "azure_search", 
@@ -30,7 +32,7 @@ chatCompletion["data_sources"] = [
             },
             "endpoint": f"https://{SEARCH_SERVICE_NAME}.search.windows.net",
             "index_name": INDEX_NAME,
-            "role_information": "Reference manual for the Longer 3D printer."
+            "role_information": "Reference manual for the Longer 3D printers and Citizen watches."
         }
     }
 ]
