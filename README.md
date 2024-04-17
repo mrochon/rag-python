@@ -80,6 +80,7 @@ pip install pytesseract
 1. [Krystian Safjan's Chunking strategies](https://safjan.com/from-fixed-size-to-nlp-chunking-a-deep-dive-into-text-chunking-techniques/#google_vignette)
 2. [Carlo C. Chunking strategies](https://medium.com/aimonks/chunking-strategies-for-more-effective-rag-through-llm-63ae7b046b46)
 3. [OpenAI REST API](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/cognitiveservices/data-plane/AzureOpenAI/inference/stable/2024-02-01/inference.json)
+4. [Py app sample](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/app/backend/app.py)
 
 ## Environment
 
@@ -90,3 +91,7 @@ Could be done as [Git Codespace except](https://docs.github.com/en/codespaces/se
 ```
 py -m venv C:\Users\mrochon\source\repos\python 
 ```
+
+## questionss
+
+1. Optimal maximumPageLength?
