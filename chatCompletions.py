@@ -15,7 +15,7 @@ SEARCH_API_KEY=os.environ.get("SEARCH_API_KEY")
 file_path = os.path.join(os.getcwd(), "data/chatCompletion.json")
 with open(file_path, "r") as file:
     chatCompletion= json.load(file)
-    file_path = os.path.join(os.getcwd(), "data/system-prompt.txt")
+    file_path = os.path.join(os.getcwd(), "data/system-prompt-02.txt")
 with open(file_path, "r") as file:
     sysPrompt= file.read()
 
@@ -34,6 +34,28 @@ chatCompletion["data_sources"] = [
         }
     }
 ]
+
+rest_url = f"{OPENAI_ENDPOINT}/openai/deployments/{GTP_DEPLOYMENT}/chat/completions?api-version=2024-02-01"
+headers = {"api-key": OPENAI_API_KEY, "Content-Type": "application/json"}
+
+while True:
+    user_input = input("Enter your message (enter 'q' to quit): ")
+    if user_input == 'q':
+        break
+    chatCompletion["messages"].append({"role": "user", "content": user_input})
+    response = requests.post(url=rest_url, headers=headers, json=chatCompletion)
+    if response.status_code == 200:
+        user_data = response.json()
+        #print(json.dumps(user_data, indent=2))
+        for choice in user_data["choices"]:
+            print(f"{choice['message']['role']}: {choice['message']['content']}")
+            for citation in choice["message"]["context"]["citations"]:
+                print(f"{citation["url"]}-{citation["chunk_id"]}")
+                #print(f"{citation['content']}")
+            chatCompletion["messages"].append({"role": "assistant", "content": choice['message']['content']})
+    else:
+        print(f"Error fetching user data: {response.status_code} - {response.text}")
+
 
 # https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling?tabs=python
 # Needs specific gtp models; not available in my subscription
@@ -59,24 +81,3 @@ chatCompletion["data_sources"] = [
 # ]
 
 #print(json.dumps(chatCompletion, indent=2))
-
-rest_url = f"{OPENAI_ENDPOINT}/openai/deployments/{GTP_DEPLOYMENT}/chat/completions?api-version=2024-02-01"
-headers = {"api-key": OPENAI_API_KEY, "Content-Type": "application/json"}
-
-while True:
-    user_input = input("Enter your message (enter 'q' to quit): ")
-    if user_input == 'q':
-        break
-    chatCompletion["messages"].append({"role": "user", "content": user_input})
-    response = requests.post(url=rest_url, headers=headers, json=chatCompletion)
-    if response.status_code == 200:
-        user_data = response.json()
-        #print(json.dumps(user_data, indent=2))
-        for choice in user_data["choices"]:
-            print(f"{choice['message']['role']}: {choice['message']['content']}")
-            for citation in choice["message"]["context"]["citations"]:
-                print(f"{citation["url"]}-{citation["chunk_id"]}")
-                #print(f"{citation['content']}")
-            chatCompletion["messages"].append({"role": "assistant", "content": choice['message']['content']})
-    else:
-        print(f"Error fetching user data: {response.status_code} - {response.text}")

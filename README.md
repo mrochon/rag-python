@@ -86,3 +86,7 @@ pip install pytesseract
 Use local python environment (@command:python.createEnvironment).
 
 Could be done as [Git Codespace except](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces) Tesserac requires own .exe, would need a new image.
+
+```
+py -m venv C:\Users\mrochon\source\repos\python 
+```

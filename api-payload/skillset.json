@@ -111,7 +111,7 @@
         }
     ],
     "parameters": {
-        "projectionMode": "includeIndexingParentDocuments"
+        "projectionMode": "skipIndexingParentDocuments"
     }
   },  
   "cognitiveServices": {
