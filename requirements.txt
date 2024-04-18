@@ -11,3 +11,5 @@ requests_oauthlib
 langchain_experimental
 langchain-text-splitters
 pypdf
+fast
+jsonschema
