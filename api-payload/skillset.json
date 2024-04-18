@@ -11,8 +11,8 @@
       "context": "/document",
       "defaultLanguageCode": "en",
       "textSplitMode": "pages",
-      "maximumPageLength": 3000,
-      "pageOverlapLength": 750,
+      "maximumPageLength": 1000,
+      "pageOverlapLength": 450,
       "maximumPagesToTake": 0,
       "inputs": [
         {

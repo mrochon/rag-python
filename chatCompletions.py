@@ -53,6 +53,11 @@ while True:
                 print(f"{citation["url"]}-{citation["chunk_id"]}")
                 #print(f"{citation['content']}")
             chatCompletion["messages"].append({"role": "assistant", "content": choice['message']['content']})
+        promptTokens = user_data["usage"]["prompt_tokens"]
+        completionTokens = user_data["usage"]["completion_tokens"]        
+        print(f"Prompt tokens    : {promptTokens}")
+        print(f"Completion tokens: {completionTokens}")
+        print(f"Total            : {promptTokens+completionTokens}")        
     else:
         print(f"Error fetching user data: {response.status_code} - {response.text}")
 

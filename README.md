@@ -6,11 +6,15 @@ Create and populate Azure Search index with data from pdf files stored in blob s
 
 ## Operation
 
+See [VSCode environment setup documentation](https://code.visualstudio.com/docs/python/environments) to prepare your propject.
+
 1. Create a datasource in Azure Search to read your pdfs from a blob container
 2. Register a confidential client app in Entra ID and give it Search Index Contributor permission
-2. Setup your py environment with this repo
+2. Setup your py environment with this repo, see [VSCode environment setup documentation](https://code.visualstudio.com/docs/python/environments).
+4. Update *.env* file (see below) with your own settings
 2. Execute createIndex.py to create an index, skillset and indexer
 3. Run chatCompletions.py to enter questions and received answers from OpenAI
+6. Use Azure portal Azure Search Index view to execute queries
 
 The skillset chunks the pdf docs into pages, hides some PII data, vectorizes the text content and uploads chunk to secondary index (document goes to primary).
 
@@ -44,6 +48,7 @@ See *requirements.txt*
 ```
 pip install -r requirmeents.txt
 ```
+
 ### Install Tesseract for Confluence documenting reading**
 
 If planning to read Confluence data:
@@ -95,3 +100,4 @@ py -m venv C:\Users\mrochon\source\repos\python
 ## questionss
 
 1. Optimal maximumPageLength?
+2. Handling search references in completion response
