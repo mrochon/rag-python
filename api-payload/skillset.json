@@ -114,11 +114,6 @@
         "projectionMode": "skipIndexingParentDocuments"
     }
   },  
-  "cognitiveServices": {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "/subscriptions/56815821-7deb-4dce-8c2a-374756037a1e/resourceGroups/AI/providers/Microsoft.CognitiveServices/accounts/mraiskillsets",
-    "key": "AI_SERVICE_KEY"
-  },
   "knowledgeStore": null,
   "encryptionKey": null
 }
