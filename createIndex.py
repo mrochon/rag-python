@@ -4,7 +4,7 @@ import dotenv
 import requests
 import json
 
-dotenv.load_dotenv()
+dotenv.load_dotenv('.env', verbose=True, override=True)
 
 INDEXER_NAME=os.environ.get("INDEXER_NAME")
 TENANT_ID = os.environ.get("TENANT_ID")
@@ -26,7 +26,7 @@ if response.status_code == 200:
     access_token = token_data.get("access_token")
 else:
     sys.exit(f"Error requesting token. Status code: {response.status_code}")
-#headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
+headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
 
 headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
 
