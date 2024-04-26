@@ -90,7 +90,6 @@
           "indexAnalyzer": null,
           "searchAnalyzer": null,
           "analyzer": "standard.lucene",
-          "normalizer": null,
           "synonymMaps": []
         },
         {
@@ -119,7 +118,7 @@
           "indexAnalyzer": null,
           "searchAnalyzer": null,
           "analyzer": "standard.lucene",
-                      "synonymMaps": []
+          "synonymMaps": []
         },
         {
           "name": "offset",
@@ -161,7 +160,7 @@
           "indexAnalyzer": null,
           "searchAnalyzer": null,
           "analyzer": null,
-          "normalizer": null,
+
           "synonymMaps": []
         }
       ]
@@ -201,7 +200,6 @@
   "corsOptions": null,
   "suggesters": [],
   "analyzers": [],
-  "normalizers": [],
   "tokenizers": [],
   "tokenFilters": [],
   "charFilters": [],

@@ -11,6 +11,7 @@ TENANT_ID = os.environ.get("TENANT_ID")
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 SEARCH_SERVICE_NAME = os.environ.get("SEARCH_SERVICE_NAME")
+SEARCH_API_KEY = os.environ.get("SEARCH_API_KEY")
 
 token_params = {
     "grant_type": "client_credentials",
@@ -25,9 +26,9 @@ if response.status_code == 200:
     access_token = token_data.get("access_token")
 else:
     sys.exit(f"Error requesting token. Status code: {response.status_code}")
-headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
+#headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
 
-#headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
+headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
 
 variables = list()
 file_path = os.path.join(os.getcwd(), ".env")
@@ -41,34 +42,36 @@ with open(file_path, "r") as file:
         variables.append((key, value))
 
 def handleResponse(response):
-    if response.status_code == 200 or response.status_code == 201:
-        user_data = response.json()
+    if response.status_code == 200 or response.status_code == 201 or response.status_code == 204:
+        #user_data = response.json()
         #print(user_data)
         print("Ok")
     else:
-        sys.exit(f"Error fetching user data: {response.status_code} - {response.text}")
+        sys.exit(f"Error calling Azure Search API: {response.status_code} - {response.text}")
                  
-def createObject(objectName):
-    print(f"Creating {objectName}")
-    if objectName == "index":
+def createObject(objectType, objectName):
+    print(f"Creating {objectType}")
+    if objectType == "index":
         plural = "indexes"
     else:
-        plural = f"{objectName}s"
-    file_path = os.path.join(os.getcwd(), f"api-payload/{objectName}.json")
+        plural = f"{objectType}s"
+    file_path = os.path.join(os.getcwd(), f"api-payload/{objectType}.json")
     with open(file_path, "r") as file:
         payload= file.read()
     #print(json.dumps(createIndex, indent=2))
     for key, value in variables:
-        payload = payload.replace(key, value)   
-    rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/{plural}?api-version=2024-03-01-preview"   
-    response = requests.post(url=rest_url, headers=headers, json=json.loads(payload))
+        payload = payload.replace(key, value)  
+    # preview gives vectorization
+    rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/{plural}('{objectName}')?api-version=2024-03-01-preview"   
+    response = requests.put(url=rest_url, headers=headers, json=json.loads(payload))
     handleResponse(response)    
 
 # Note: updating an index does not delete existing index data. Only way to delete the data is to delete the index
 
-createObject('index')   
-createObject('skillset')
-createObject('indexer')
+createObject('datasource', os.environ["DATA_SOURCE_NAME"])  
+createObject('index', os.environ["INDEX_NAME"])   
+createObject('skillset', os.environ["SKILLSET_NAME"])
+createObject('indexer', os.environ["INDEXER_NAME"])
 
 
 

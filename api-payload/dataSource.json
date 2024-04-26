@@ -2,18 +2,13 @@
     "@odata.context": "https://SEARCH_SERVICE_NAME.search.windows.net/$metadata#datasources/$entity",
     "@odata.etag": "\"0x8DC59AEA85B6E01\"",
     "name": "manuals",
-    "description": "PDF files",
+    "description": "BLOB_DESCRIPTION",
     "type": "azureblob",
-    "subtype": null,
     "credentials": {
       "connectionString": "BLOB_CONNECTION_STRING"
     },
     "container": {
       "name": "BLOB_CONTAINER_NAME",
       "query": null
-    },
-    "dataChangeDetectionPolicy": null,
-    "dataDeletionDetectionPolicy": null,
-    "encryptionKey": null,
-    "identity": null
+    }
   }
