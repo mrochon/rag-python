@@ -1,0 +1,977 @@
+{"data": [
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "role": "assistant",
+        "context": {
+          "citations": [
+            {
+              "content": "aHR0cHM6Ly9haTg0YWQuYmxvYi5jb3JlLndpbmRvd3MubmV0L21hbnVhbHMvTEs1cHJvJTIwdXNlciUyMG1hbnVhbCUyMHYyLjEucGRm0\nrequirement: 10\u00b0C~30\u00b0C, humidity requirement:\n\n20%~50%, this 3D printer can work normally within this range;\n\nbeyond this range, this 3D printer will unable to achieve the best\n\nprint results.\n\n\n\nwww.longer3d.com support@longer3d.com3\n\nA. Product information\n(1)Model parameter\n\nModel LK5 Pro Molding FDM\n\nPrinting size 300*300*400 mm Nozzle diameter 0.4 mm\n\nPrinting speed Up to 120 mm/s Layer thickness 0.1-0.4 mm\n\nSlicing software Cura etc. File format STL, G-Code, OBJ\n\nConnectionmethod TF card or USB Operating system Windows,MAC, etc.\n\nNozzle Temp. Up to 250 \u00b0 C Hot bed Temp. Up to 100 \u00b0 C\n\nFilament\n\ndiameter\n1.75mm Power supply Output 24V DC\n\nNo. of nozzles 1 Filament color Multi-color optional\n\nFrame Aluminum frame Machine weight 11 Kg\n\nMachine size 580*540*663 mm Package size 622*588*193 mm\n\nSupport filaments PLA, ABS, wood, copper filaments\n\nUse environment Temperature 10-30 \u00b0 C, Humidity 20-50%\n\nSpecial feature\n\nInclined rod\n\nLattice glass\n\n4.3 inch large touch screen\nrequirement: 10\u00b0C~30\u00b0C, humidity requirement:\n\n20%~50%, this 3D printer can work normally within this range;\n\nbeyond this range, this 3D printer will unable to achieve the best\n\nprint results.\n\n\n\nwww.longer3d.com support@longer3d.com3\n\nA. Product information\n(1)Model parameter\n\nModel LK5 Pro Molding FDM\n\nPrinting size 300*300*400 mm Nozzle diameter 0.4 mm\n\nPrinting speed Up to 120 mm/s Layer thickness 0.1-0.4 mm\n\nSlicing software Cura etc. File format STL, G-Code, OBJ\n\nConnectionmethod TF card or USB Operating system Windows,MAC, etc.\n\nNozzle Temp. Up to 250 \u00b0 C Hot bed Temp. Up to 100 \u00b0 C\n\nFilament\n\ndiameter\n1.75mm Power supply Output 24V DC\n\nNo. of nozzles 1 Filament color Multi-color optional\n\nFrame Aluminum frame Machine weight 11 Kg\n\nMachine size 580*540*663 mm Package size 622*588*193 mm\n\nSupport filaments PLA, ABS, wood, copper filaments\n\nUse environment Temperature 10-30 \u00b0 C, Humidity 20-50%\n\nSpecial feature\n\nInclined rod\n\nLattice glass\n\n4.3 inch large touch screen",
+              "title": null,
+              "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+              "filepath": null,
+              "chunk_id": "0"
+            },
+            {
+              "content": "aHR0cHM6Ly9haTg0YWQuYmxvYi5jb3JlLndpbmRvd3MubmV0L21hbnVhbHMvTEs1cHJvJTIwdXNlciUyMG1hbnVhbCUyMHYyLjEucGRm0\nto print the\n\nselected file.\n\n\n\nwww.longer3d.com support@longer3d.com18\n\n(8)Print interface\n\nReal-time temp\nof hot bed\n\nTarget temp of\nhot bed\n\nReal-time temp\nof nozzle\n\nTarget temp of\nnozzle\n\nThe file name\n\nTime consumed\n\nThe height of Z\n\nAdjust settings Change filament\n\nPrinting progress\n\nPause printing Cancel printing\n\n\n\nwww.longer3d.com support@longer3d.com19\n\nC. Installation and use of Cura 4.8\nslicing software\n(1)Software installation\n\nThe 3D printer reads Gcode files and prints. It is necessary to\n\nconvert 3D files (such as STL files) into Gcode files for the machine\n\nto recognize. Software that converts the 3D file into Gcode files is\n\ncalled slicing software.\n\nThe video in the link below takes the installation of Cura4.8 on Mac\n\nOS and Windows as an example to demonstrate the process of\n\nsoftware installation, adding models, and slicing the model.\n\nMac OS:\n\nhttps://www.youtube.com/watch?v=XKqRb434USw&amp;t=96s\n\nWindows: https://www.youtube.com/watch?v=jdLYBYFEBlQ&amp;t=46s\nto print the\n\nselected file.\n\n\n\nwww.longer3d.com support@longer3d.com18\n\n(8)Print interface\n\nReal-time temp\nof hot bed\n\nTarget temp of\nhot bed\n\nReal-time temp\nof nozzle\n\nTarget temp of\nnozzle\n\nThe file name\n\nTime consumed\n\nThe height of Z\n\nAdjust settings Change filament\n\nPrinting progress\n\nPause printing Cancel printing\n\n\n\nwww.longer3d.com support@longer3d.com19\n\nC. Installation and use of Cura 4.8\nslicing software\n(1)Software installation\n\nThe 3D printer reads Gcode files and prints. It is necessary to\n\nconvert 3D files (such as STL files) into Gcode files for the machine\n\nto recognize. Software that converts the 3D file into Gcode files is\n\ncalled slicing software.\n\nThe video in the link below takes the installation of Cura4.8 on Mac\n\nOS and Windows as an example to demonstrate the process of\n\nsoftware installation, adding models, and slicing the model.\n\nMac OS:\n\nhttps://www.youtube.com/watch?v=XKqRb434USw&amp;t=96s\n\nWindows: https://www.youtube.com/watch?v=jdLYBYFEBlQ&amp;t=46s",
+              "title": null,
+              "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+              "filepath": null,
+              "chunk_id": "0"
+            },
+            {
+              "content": "aHR0cHM6Ly9haTg0YWQuYmxvYi5jb3JlLndpbmRvd3MubmV0L21hbnVhbHMvTEs1cHJvJTIwdXNlciUyMG1hbnVhbCUyMHYyLjEucGRm0\nwhich will cause the hot bed can\n\nnot be leveled normally;\n\n2) If one side of the hot bed can not leveled properly,it may caused\n\nby the tilted X-axis beam.Then please level the X-axis beam by\n\nadjusting the right side eccentric nut with a wrench.\n\n\n\nwww.longer3d.com support@longer3d.com29\n\nQuestion4: How to solve the problem of filament is not\n\nadhered to the printing bed?\n\n1) First check whether the hot bed has been properly leveled, if the\n\nnozzle is too high from the hot bed, please re-level the hot bed;\n\n2) Then make sure that the hot bed is properly heated to the right\n\ntemperature to ensure a sufficient adhesion between the filament\n\nand the hot bed, such as 80\u2103 for PLA;\n\n3) In addition, in order to ensure good adhesion between the\n\nmodel and the platform, a raft can be added to the 3d model when\n\nsliced in the Cura which can increase adhesion between the model\n\nand the platform.\n\nQuestion5: what to do if the printer can not be printed\n\nonline?\nwhich will cause the hot bed can\n\nnot be leveled normally;\n\n2) If one side of the hot bed can not leveled properly,it may caused\n\nby the tilted X-axis beam.Then please level the X-axis beam by\n\nadjusting the right side eccentric nut with a wrench.\n\n\n\nwww.longer3d.com support@longer3d.com29\n\nQuestion4: How to solve the problem of filament is not\n\nadhered to the printing bed?\n\n1) First check whether the hot bed has been properly leveled, if the\n\nnozzle is too high from the hot bed, please re-level the hot bed;\n\n2) Then make sure that the hot bed is properly heated to the right\n\ntemperature to ensure a sufficient adhesion between the filament\n\nand the hot bed, such as 80\u2103 for PLA;\n\n3) In addition, in order to ensure good adhesion between the\n\nmodel and the platform, a raft can be added to the 3d model when\n\nsliced in the Cura which can increase adhesion between the model\n\nand the platform.\n\nQuestion5: what to do if the printer can not be printed\n\nonline?",
+              "title": null,
+              "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+              "filepath": null,
+              "chunk_id": "0"
+            },
+            {
+              "content": "aHR0cHM6Ly9haTg0YWQuYmxvYi5jb3JlLndpbmRvd3MubmV0L21hbnVhbHMvTEs1cHJvJTIwdXNlciUyMG1hbnVhbCUyMHYyLjEucGRm0\nthe tray to\n\navoid filaments and affect the next print.\n\nTo use this printer, it is recommended to use the supplies provided\n\nby the company. At present, the quality of filaments sold in the retail\n\nmarket is uneven, and printing is prone to breakage.\n\nStaggering and clogging the printer nozzle, etc., and irreversible\n\ndamage to the heating components of the nozzle, the extrusion\n\nmotor and the extrusion gear. The company will not guarantee the\n\nprinter due to the use of filaments other than our company.\n\n5) Environmental requirements\n\nTemperature requirement: 10\u00b0C~30\u00b0C, humidity requirement:\n\n20%~50%, this 3D printer can work normally within this range;\n\nbeyond this range, this 3D printer will unable to achieve the best\n\nprint results.\n\n\n\nwww.longer3d.com support@longer3d.com3\n\nA. Product information\n(1)Model parameter\n\nModel LK5 Pro Molding FDM\n\nPrinting size 300*300*400 mm Nozzle diameter 0.4 mm\n\nPrinting speed Up to 120 mm/s Layer thickness 0.1-0.4 mm\n\nSlicing software Cura etc.\nthe tray to\n\navoid filaments and affect the next print.\n\nTo use this printer, it is recommended to use the supplies provided\n\nby the company. At present, the quality of filaments sold in the retail\n\nmarket is uneven, and printing is prone to breakage.\n\nStaggering and clogging the printer nozzle, etc., and irreversible\n\ndamage to the heating components of the nozzle, the extrusion\n\nmotor and the extrusion gear. The company will not guarantee the\n\nprinter due to the use of filaments other than our company.\n\n5) Environmental requirements\n\nTemperature requirement: 10\u00b0C~30\u00b0C, humidity requirement:\n\n20%~50%, this 3D printer can work normally within this range;\n\nbeyond this range, this 3D printer will unable to achieve the best\n\nprint results.\n\n\n\nwww.longer3d.com support@longer3d.com3\n\nA. Product information\n(1)Model parameter\n\nModel LK5 Pro Molding FDM\n\nPrinting size 300*300*400 mm Nozzle diameter 0.4 mm\n\nPrinting speed Up to 120 mm/s Layer thickness 0.1-0.4 mm\n\nSlicing software Cura etc.",
+              "title": null,
+              "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+              "filepath": null,
+              "chunk_id": "0"
+            },
+            {
+              "content": "aHR0cHM6Ly9haTg0YWQuYmxvYi5jb3JlLndpbmRvd3MubmV0L21hbnVhbHMvTEs1cHJvJTIwdXNlciUyMG1hbnVhbCUyMHYyLjEucGRm0\n(2)Add 3D model into Cura 4.8\n\nIn the Cura software interface, click on the \"Open File(s)\" to import\n\nyour own 3D model (such as \".stl\" file).\n\nNote: as shown in the figure on the right, the gray color of the\n\nmodel indicates that the model is out of print range.\n\n\n\nwww.longer3d.com support@longer3d.com21\n\nMore Operations:\n\na) Position change: left click on the model, hold on and drag the\n\nmodel to move.\n\nb) Zoom in/out: scroll the mouse wheel.\n\nc) Change viewing angle: right-click and move the mouse.\n\n(3)Slicing parameters\n\nUsers can customize the printing parameters according to\n\nindividual needs. We recommend using the default parameters and\n\nLONGER filaments to get the best printing results, please refer to\n\npage 11 to import the default settings.\n\n\n\nwww.longer3d.com support@longer3d.com22\n\n\n\nwww.longer3d.com support@longer3d.com23\n\n(4)Slice and save Gcode files\n\nClick Slice to generate G-code for printing.\n\nSave to removable drive (Save the gcode file to storage card). And\n(2)Add 3D model into Cura 4.8\n\nIn the Cura software interface, click on the \"Open File(s)\" to import\n\nyour own 3D model (such as \".stl\" file).\n\nNote: as shown in the figure on the right, the gray color of the\n\nmodel indicates that the model is out of print range.\n\n\n\nwww.longer3d.com support@longer3d.com21\n\nMore Operations:\n\na) Position change: left click on the model, hold on and drag the\n\nmodel to move.\n\nb) Zoom in/out: scroll the mouse wheel.\n\nc) Change viewing angle: right-click and move the mouse.\n\n(3)Slicing parameters\n\nUsers can customize the printing parameters according to\n\nindividual needs. We recommend using the default parameters and\n\nLONGER filaments to get the best printing results, please refer to\n\npage 11 to import the default settings.\n\n\n\nwww.longer3d.com support@longer3d.com22\n\n\n\nwww.longer3d.com support@longer3d.com23\n\n(4)Slice and save Gcode files\n\nClick Slice to generate G-code for printing.\n\nSave to removable drive (Save the gcode file to storage card). And",
+              "title": null,
+              "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+              "filepath": null,
+              "chunk_id": "0"
+            }
+          ],
+          "intent": "[\"recommended filament for 3D printing\", \"best filament for 3D printing\", \"top filament choices for 3D printing\"]"
+        }
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": "The"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " recommended"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " filament"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " for"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " the"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " Longer"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " "
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": "3"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": "D"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " printer"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " is"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " PLA"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": ","
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " ABS"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": ","
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " wood"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": ","
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " and"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " copper"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " fil"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": "aments"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " [doc1][doc4]."
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " It"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " is"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " advisable"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " to"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " use"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " the"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " supplies"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " provided"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " by"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " the"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " company"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": ","
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " as"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " the"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " quality"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " of"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " fil"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": "aments"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " sold"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " in"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " the"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " retail"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " market"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " may"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " vary"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " and"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " can"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " lead"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " to"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " printing"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " issues"
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+,
+{
+  "id": "6778c3c6-4387-425d-9c28-12f3807fe2c7",
+  "model": "gpt-35-turbo-16k",
+  "created": 1714170861,
+  "object": "extensions.chat.completion.chunk",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": " [doc4]."
+      },
+      "end_turn": false,
+      "finish_reason": null
+    }
+  ]
+}
+]
+}

@@ -2,6 +2,7 @@ import os
 import dotenv
 import requests
 import json
+import time
 
 dotenv.load_dotenv(".env", verbose=True, override=True)
 
@@ -41,50 +42,32 @@ rest_url = f"{OPENAI_ENDPOINT}/openai/deployments/{GTP_DEPLOYMENT}/chat/completi
 headers = {"api-key": OPENAI_API_KEY, "Content-Type": "application/json"}
 
 while True:
-    user_input = input("Enter your message (enter 'q' to quit): ")
+    #user_input = input("Enter your message (enter 'q' to quit): ")
+    user_input = "What is the recommended filament?"
     if user_input == 'q':
         break
     chatCompletion["messages"].append({"role": "user", "content": user_input})
     response = requests.post(url=rest_url, headers=headers, json=chatCompletion)
     if response.status_code == 200:
-        user_data = response.json()
-        #print(json.dumps(user_data, indent=2))
-        for choice in user_data["choices"]:
-            print(f"{choice['message']['role']}: {choice['message']['content']}")
-            for citation in choice["message"]["context"]["citations"]:
-                print(f"{citation["url"]}-{citation["chunk_id"]}")
-                #print(f"{citation['content']}")
-            chatCompletion["messages"].append({"role": "assistant", "content": choice['message']['content']})
-        promptTokens = user_data["usage"]["prompt_tokens"]
-        completionTokens = user_data["usage"]["completion_tokens"]        
-        print(f"Prompt tokens    : {promptTokens}")
-        print(f"Completion tokens: {completionTokens}")
-        print(f"Total            : {promptTokens+completionTokens}")        
+        for line in response.iter_lines():
+            if line:
+                line = line.decode('utf-8')
+                #print(line[0:10])
+                user_data = json.loads(line[6:])
+                #print(json.dumps(user_data, indent=2))
+                choices = user_data["choices"]
+                if choices[0]['finish_reason'] == 'stop':
+                    print()
+                    print("Chat completed")
+                    break
+                for choice in choices:
+                    delta = choice["delta"]
+                    if 'content' in delta:
+                        print(delta['content'], end="")
+                        time.sleep(0.05)
+                    elif 'role' in delta:
+                        print()
+                        print("ChatGPT used these intents when searching:")
+                        print(delta['context']['intent'])
     else:
         print(f"Error fetching user data: {response.status_code} - {response.text}")
-
-
-# https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling?tabs=python
-# Needs specific gtp models; not available in my subscription
-# chatCompletion["tools"] = [
-#         {
-#             "type": "function",
-#             "function": {
-#                 "name": "get_current_weather",
-#                 "description": "Get the current weather in a given location",
-#                 "parameters": {
-#                     "type": "object",
-#                     "properties": {
-#                         "location": {
-#                             "type": "string",
-#                             "description": "The city and state, e.g. San Francisco, CA",
-#                         },
-#                         "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
-#                     },
-#                     "required": ["location"],
-#                 },
-#             },
-#         }
-# ]
-
-#print(json.dumps(chatCompletion, indent=2))
