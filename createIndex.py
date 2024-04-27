@@ -61,7 +61,7 @@ def createObject(objectType, objectName):
     #print(json.dumps(createIndex, indent=2))
     for key, value in variables:
         payload = payload.replace(key, value)  
-    # preview gives vectorization
+    # preview API supports vectorization
     rest_url = f"https://{SEARCH_SERVICE_NAME}.search.windows.net/{plural}('{objectName}')?api-version=2024-03-01-preview"   
     response = requests.put(url=rest_url, headers=headers, json=json.loads(payload))
     handleResponse(response)    
