@@ -69,10 +69,12 @@ pip install pytesseract
 
 | Source | Comments |
 | --- | --- |
-| [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create new index, skillset and indexer | 
-| [chatCompletion.py](https://github.com/mrochon/python/blob/main/chatCompletion.py) | Simple REST based chat completion | 
+| [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create new datasource, index, skillset and indexer | 
+| [chatCompletions.py](https://github.com/mrochon/python/blob/main/chatCompletions.py) | Simple REST based chat completion | 
+| [chatCompletionsStream.py](https://github.com/mrochon/python/blob/main/chatCompletionsStream.py) | REST based chat completion with response streaming | 
 | ---other--- |  | 
-| [readDocs.py](https://github.com/mrochon/python/blob/main/readDocs.py) | Reads data from Confluence |
+| [confluenceDocReader.py](https://github.com/mrochon/python/blob/main/confluenceDocReader.py) | Reads data from Confluence |
+| [chunkRecursive.py](https://github.com/mrochon/python/blob/main/chunkRecursive.py) | Break text into chunks using recursive chunking |
 | [chunkText.py](https://github.com/mrochon/python/blob/main/chunkText.py) | Break text into chunks ([using semantic chunking](https://python.langchain.com/docs/modules/data_connection/document_transformers/semantic-chunker/)) |
 | [vectorize.py](https://github.com/mrochon/python/blob/main/vectorize.py) | Create embedding vectors from text |
 | [createIndex.py](https://github.com/mrochon/python/blob/main/createIndex.py) | Create Azure Search index [using REST call](https://learn.microsoft.com/en-us/rest/api/searchservice/indexes/create?view=rest-searchservice-2023-11-01&tabs=HTTP)|
