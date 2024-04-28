@@ -1,0 +1,62 @@
+{
+    "id": "efee5c16-d17e-430f-830c-01e7b83eab91",
+    "model": "gpt-35-turbo-16k",
+    "created": 1714294698,
+    "object": "extensions.chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "Longer recommends using their own filaments for the best printing results [doc2]. They advise against using filaments sold in the retail market due to their varying quality, which can lead to issues such as breakage, clogging the printer nozzle, and damage to the printer components [doc1]. Using Longer filaments ensures better print quality and avoids potential problems [doc2].",
+          "end_turn": true,
+          "context": {
+            "citations": [
+              {
+                "content": "for \u2265 96 hours, it\n\nshould be stopped for 1-3 hours.\n\n4) filaments\n\nThe filaments are not used after unpacking or for a long period of\n\ntime after the print model is completed. The filaments should be\n\ntaken out of the printer and sealed to prevent the filaments from\n\n\n\nwww.longer3d.com support@longer3d.com2\n\nbeing exposed to the air for a long time, causing moisture and\n\naffecting the print quality. At the same time, when the filaments are\n\nremoved The front end of the filament should be fixed on the tray to\n\navoid filaments and affect the next print.\n\nTo use this printer, it is recommended to use the supplies provided\n\nby the company. At present, the quality of filaments sold in the retail\n\nmarket is uneven, and printing is prone to breakage.\n\nStaggering and clogging the printer nozzle, etc., and irreversible\n\ndamage to the heating components of the nozzle, the extrusion\n\nmotor and the extrusion gear. The company will not guarantee the",
+                "title": null,
+                "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "filepath": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "chunk_id": "0"
+              },
+              {
+                "content": "the printing parameters according to\n\nindividual needs. We recommend using the default parameters and\n\nLONGER filaments to get the best printing results, please refer to\n\npage 11 to import the default settings.\n\n\n\nwww.longer3d.com support@longer3d.com22\n\n\n\nwww.longer3d.com support@longer3d.com23\n\n(4)Slice and save Gcode files\n\nClick Slice to generate G-code for printing.\n\nSave to removable drive (Save the gcode file to storage card). And\n\nthe software will evaluate the time required to print the file and the\n\nweight of filament.\n\nNOTE: \u201cSave to removable drive\u201d option will apear when microSD\n\ncard is inserted.\n\n(5)More\n\nA) Slice and preview\n\nClick the \"Slice\" button in the lower right corner of the software.\n\nAfter the slicing is finished, click the \"preview\" button to preview the\n\nsimulated printing effect in the preview view.\n\n\n\nwww.longer3d.com support@longer3d.com24\n\nB) Print online\n\nAfter the parameters have been set up, you can print online via\n\nCura.",
+                "title": null,
+                "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "filepath": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "chunk_id": "1"
+              },
+              {
+                "content": "(2)Add 3D model into Cura 4.8\n\nIn the Cura software interface, click on the \"Open File(s)\" to import\n\nyour own 3D model (such as \".stl\" file).\n\nNote: as shown in the figure on the right, the gray color of the\n\nmodel indicates that the model is out of print range.\n\n\n\nwww.longer3d.com support@longer3d.com21\n\nMore Operations:\n\na) Position change: left click on the model, hold on and drag the\n\nmodel to move.\n\nb) Zoom in/out: scroll the mouse wheel.\n\nc) Change viewing angle: right-click and move the mouse.\n\n(3)Slicing parameters\n\nUsers can customize the printing parameters according to\n\nindividual needs. We recommend using the default parameters and\n\nLONGER filaments to get the best printing results, please refer to\n\npage 11 to import the default settings.\n\n\n\nwww.longer3d.com support@longer3d.com22\n\n\n\nwww.longer3d.com support@longer3d.com23\n\n(4)Slice and save Gcode files\n\nClick Slice to generate G-code for printing.\n\nSave to removable drive (Save the gcode file to storage card). And",
+                "title": null,
+                "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "filepath": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "chunk_id": "2"
+              },
+              {
+                "content": "2) During the operation of the machine, it is forbidden to reach into\n\nthe machine to prevent pinching.\n\n3) The working voltage is 110~220V AC voltage 50HZ AC. The\n\nthree-pin socket must be grounded. Do not use other power\n\nsources to avoid damage to components or fire, electric shock and\n\nother accidents.\n\nNote: Before powering on, please check whether the input voltage\n\nvalue of the switching power supply meets the voltage standard of\n\nthe country or region.\n\n3) When the machine is working continuously for \u2265 96 hours, it\n\nshould be stopped for 1-3 hours.\n\n4) filaments\n\nThe filaments are not used after unpacking or for a long period of\n\ntime after the print model is completed. The filaments should be\n\ntaken out of the printer and sealed to prevent the filaments from\n\n\n\nwww.longer3d.com support@longer3d.com2\n\nbeing exposed to the air for a long time, causing moisture and\n\naffecting the print quality. At the same time, when the filaments are",
+                "title": null,
+                "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "filepath": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "chunk_id": "3"
+              },
+              {
+                "content": "requirement: 10\u00b0C~30\u00b0C, humidity requirement:\n\n20%~50%, this 3D printer can work normally within this range;\n\nbeyond this range, this 3D printer will unable to achieve the best\n\nprint results.\n\n\n\nwww.longer3d.com support@longer3d.com3\n\nA. Product information\n(1)Model parameter\n\nModel LK5 Pro Molding FDM\n\nPrinting size 300*300*400 mm Nozzle diameter 0.4 mm\n\nPrinting speed Up to 120 mm/s Layer thickness 0.1-0.4 mm\n\nSlicing software Cura etc. File format STL, G-Code, OBJ\n\nConnectionmethod TF card or USB Operating system Windows,MAC, etc.\n\nNozzle Temp. Up to 250 \u00b0 C Hot bed Temp. Up to 100 \u00b0 C\n\nFilament\n\ndiameter\n1.75mm Power supply Output 24V DC\n\nNo. of nozzles 1 Filament color Multi-color optional\n\nFrame Aluminum frame Machine weight 11 Kg\n\nMachine size 580*540*663 mm Package size 622*588*193 mm\n\nSupport filaments PLA, ABS, wood, copper filaments\n\nUse environment Temperature 10-30 \u00b0 C, Humidity 20-50%\n\nSpecial feature\n\nInclined rod\n\nLattice glass\n\n4.3 inch large touch screen",
+                "title": null,
+                "url": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "filepath": "https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf",
+                "chunk_id": "5"
+              }
+            ],
+            "intent": "[\"filaments recommended by Longer\", \"Longer's recommended filaments\"]"
+          }
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4104,
+      "completion_tokens": 94,
+      "total_tokens": 4198
+    }
+  }

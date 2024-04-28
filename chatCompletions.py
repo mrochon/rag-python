@@ -30,7 +30,24 @@ chatCompletion["data_sources"] = [
             },
             "endpoint": f"https://{SEARCH_SERVICE_NAME}.search.windows.net",
             "index_name": INDEX_NAME,
-            "role_information": "Reference manual for the Longer 3D printers and Citizen watches."
+            "fields_mapping": {
+                "content_fields": [
+                    "chunk"
+                ],
+                "title_field": None,
+                "url_field": "uri",
+                "filepath_field": "uri",
+                "vector_fields": [
+                    "chunkVector"
+                ]
+            },  
+            "in_scope": False,
+            "top_n_documents": 5,
+            "query_type": "semantic",
+            "semantic_configuration": "manuals-semantic-configuration",                      
+            "role_information": "Reference manual for the Longer 3D printers and Citizen watches.",
+            "filter": None,
+            "strictness": 3
         }
     }
 ]
@@ -46,7 +63,7 @@ while True:
     response = requests.post(url=rest_url, headers=headers, json=chatCompletion)
     if response.status_code == 200:
         user_data = response.json()
-        #print(json.dumps(user_data, indent=2))
+        print(json.dumps(user_data, indent=2))
         for choice in user_data["choices"]:
             print(f"{choice['message']['role']}: {choice['message']['content']}")
             for citation in choice["message"]["context"]["citations"]:
