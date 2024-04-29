@@ -49,6 +49,10 @@ See *requirements.txt*
 pip install -r requirmeents.txt
 ```
 
+### Terminal env
+
+```python -m venv .venv```
+
 ### Install Tesseract for Confluence documenting reading**
 
 If planning to read Confluence data:

@@ -28,7 +28,7 @@ else:
     sys.exit(f"Error requesting token. Status code: {response.status_code}")
 headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
 
-headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
+#headers = {"api-key": SEARCH_API_KEY, "Content-Type": "application/json"}
 
 variables = list()
 file_path = os.path.join(os.getcwd(), ".env")
@@ -68,7 +68,7 @@ def createObject(objectType, objectName):
 
 # Note: updating an index does not delete existing index data. Only way to delete the data is to delete the index
 
-createObject('datasource', os.environ["DATA_SOURCE_NAME"])  
+#createObject('datasource', os.environ["DATA_SOURCE_NAME"])  
 createObject('index', os.environ["INDEX_NAME"])   
 createObject('skillset', os.environ["SKILLSET_NAME"])
 createObject('indexer', os.environ["INDEXER_NAME"])
