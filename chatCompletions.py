@@ -15,7 +15,7 @@ SEARCH_API_KEY=os.environ.get("SEARCH_API_KEY")
 file_path = os.path.join(os.getcwd(), "data/chatCompletion.json")
 with open(file_path, "r") as file:
     chatCompletion= json.load(file)
-    file_path = os.path.join(os.getcwd(), "data/system-prompt-02.txt")
+file_path = os.path.join(os.getcwd(), "data/system-prompt-02.txt")
 with open(file_path, "r") as file:
     sysPrompt= file.read()
 
