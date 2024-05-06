@@ -20,6 +20,10 @@ The skillset chunks the pdf docs into pages, hides some PII data, vectorizes the
 
 ## Environment Setup
 
+### Permissions
+
+Grant Search Service Contributor to a Service Principal and allow index to use RBAc for authorization (key is default)
+
 ### Variables
 
 Following environment variables need to be created in the .env file:

@@ -68,7 +68,7 @@ def createObject(objectType, objectName):
 
 # Note: updating an index does not delete existing index data. Only way to delete the data is to delete the index
 
-#createObject('datasource', os.environ["DATA_SOURCE_NAME"])  
+createObject('datasource', os.environ["DATA_SOURCE_NAME"])  
 createObject('index', os.environ["INDEX_NAME"])   
 createObject('skillset', os.environ["SKILLSET_NAME"])
 createObject('indexer', os.environ["INDEXER_NAME"])
