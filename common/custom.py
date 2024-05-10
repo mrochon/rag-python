@@ -16,10 +16,27 @@ class WithDataLLM(LLM):
     indexRoleDescription: str
     systemPrompt: str
     _history: List[str]
+    
+#     Exception has occurred: AttributeError
+# 'WithDataLLM' object has no attribute '__fields_set__'
+#   File "C:\Users\mrochon\source\repos\python\common\custom.py", line 21, in __init__
+#     self.openAIServiceName = kwargs["openAIServiceName"]
+#     ^^^^^^^^^^^^^^^^^^^^^^
+#   File "C:\Users\mrochon\source\repos\python\chatCompletionsWithLChain.py", line 65, in <module>
+#     llm = WithDataLLM(
+#           ^^^^^^^^^^^^
+# AttributeError: 'WithDataLLM' object has no attribute '__fields_set__'
 
-    @property
-    def _llm_type(self) -> str:
-        return "WithDataLLM"
+#     def __init__(self, **kwargs: Any) -> None:
+#         self.openAIServiceName = kwargs["openAIServiceName"]
+#         self.deploymentName = kwargs["deploymentName"]
+#         self.openAIServiceKey = kwargs["openAIServiceKey"]
+#         self.searchServiceName = kwargs["searchServiceName"]
+#         self.searchApiKey = kwargs["searchApiKey"]
+#         self.indexName = kwargs["indexName"]
+#         self.indexRoleDescription = kwargs["indexRoleDescription"]
+#         self.systemPrompt = kwargs["systemPrompt"]
+#         self._history = []
 
     def _call(
         self,
@@ -98,8 +115,7 @@ class WithDataLLM(LLM):
             # costs for the given LLM.)
             "model_name": "WithDataLLM",
         }
-
+    
     @property
     def _llm_type(self) -> str:
-        """Get the type of language model used by this chat model. Used for logging purposes only."""
-        return "custom"
+        return "WithDataLLM"
