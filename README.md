@@ -20,9 +20,10 @@ The skillset chunks the pdf docs into pages, hides some PII data, vectorizes the
 
 ## Environment Setup
 
-### Permissions
+### Portal
 
-Grant Search Service Contributor to a Service Principal and allow index to use RBAc for authorization (key is default)
+Grant Search Service Contributor to a Service Principal and allow index to use RBAc for authorization (key is default).
+Enable Semantic Ranker plan on the index.
 
 ### Variables
 

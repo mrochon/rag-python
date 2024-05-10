@@ -52,6 +52,7 @@ chatCompletion["data_sources"] = [
     }
 ]
 
+
 rest_url = f"{OPENAI_ENDPOINT}/openai/deployments/{GTP_DEPLOYMENT}/chat/completions?api-version=2024-02-01"
 headers = {"api-key": OPENAI_API_KEY, "Content-Type": "application/json"}
 
@@ -60,10 +61,12 @@ while True:
     if user_input == 'q':
         break
     chatCompletion["messages"].append({"role": "user", "content": user_input})
+    with open("requestOK.json","w") as f:
+        f.write(json.dumps(chatCompletion, indent=2))    
     response = requests.post(url=rest_url, headers=headers, json=chatCompletion)
     if response.status_code == 200:
         user_data = response.json()
-        print(json.dumps(user_data, indent=2))
+        #print(json.dumps(user_data, indent=2))
         for choice in user_data["choices"]:
             print(f"{choice['message']['role']}: {choice['message']['content']}")
             for citation in choice["message"]["context"]["citations"]:
