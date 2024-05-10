@@ -17,6 +17,26 @@ class WithDataLLM(LLM):
     systemPrompt: str
     _history: List[str]
     
+    # 'WithDataLLM' object has no attribute '__fields_set__'
+    #   File "C:\Users\mrochon\source\repos\python\common\custom.py", line 22, in __new__
+    #     obj.openAIServiceName = kwargs["openAIServiceName"]
+    #     ^^^^^^^^^^^^^^^^^^^^^
+    #   File "C:\Users\mrochon\source\repos\python\chatCompletionsWithLChain.py", line 65, in <module>
+    #     llm = WithDataLLM(
+    #           ^^^^^^^^^^^^
+    # AttributeError: 'WithDataLLM' object has no attribute '__fields_set__'
+    # def __new__ (cls, *args: Any, **kwargs: Any) -> "WithDataLLM":
+    #     obj = super().__new__(cls)
+    #     obj.openAIServiceName = kwargs["openAIServiceName"]
+    #     obj.deploymentName = kwargs["deploymentName"]
+    #     obj.openAIServiceKey = kwargs["openAIServiceKey"]
+    #     obj.searchServiceName = kwargs["searchServiceName"]
+    #     obj.searchApiKey = kwargs["searchApiKey"]
+    #     obj.indexName = kwargs["indexName"]
+    #     obj.indexRoleDescription = kwargs["indexRoleDescription"]
+    #     obj.systemPrompt = kwargs["systemPrompt"]
+    #     obj._history = []        
+    
 #     Exception has occurred: AttributeError
 # 'WithDataLLM' object has no attribute '__fields_set__'
 #   File "C:\Users\mrochon\source\repos\python\common\custom.py", line 21, in __init__
@@ -48,6 +68,9 @@ class WithDataLLM(LLM):
         if stop is not None:
             raise ValueError("stop kwargs are not permitted.")
         
+        # object has no field _history!
+        # if self._history is None:
+        #     self._history = []
         url = f"{self.openAIServiceName}/openai/deployments/{self.deploymentName}/chat/completions?api-version=2024-02-01"
         headers = {"api-key": self.openAIServiceKey, "Content-Type": "application/json"}
         data_sources =     {
@@ -90,17 +113,19 @@ class WithDataLLM(LLM):
             "frequency_penalty": 0,
             "logit_bias": {},
             "messages": [
-                {"role": "system", "content": self.systemPrompt },
+                {"role": "system", "content": self.systemPrompt }, # this should be donw in the constructor
                 {"role": "user", "content": prompt}],
             "data_sources": [data_sources]
         }
-        with open("request.json","w") as f:
+        with open("./temp/llm_request.json","w") as f:
             f.write(json.dumps(payload, indent=2))
         response = requests.post(url, json=payload, headers=headers, verify=False)
         response.raise_for_status()
         user_data = response.json()
-        with open("response.json","w") as f:
-            f.write(json.dumps(user_data, indent=2))        
+        with open("./temp/llm_response.json","w") as f:
+            f.write(json.dumps(user_data, indent=2)) 
+        # self._history.append({"role": "user", "content": prompt})               
+        # self._history.append({"role": "assistant", "content": user_data["choices"][0]["message"]["content"]})     
         return user_data["choices"][0]["message"]["content"]
         # print("API Response:", response.json())
         #return response.json()['generated_text']  # get the response from the API
