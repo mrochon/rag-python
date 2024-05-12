@@ -15,7 +15,7 @@ class WithDataLLM(LLM):
     indexName: str
     indexRoleDescription: str
     systemPrompt: str
-    _history: List[str]
+
     
     # 'WithDataLLM' object has no attribute '__fields_set__'
     #   File "C:\Users\mrochon\source\repos\python\common\custom.py", line 22, in __new__
@@ -35,7 +35,6 @@ class WithDataLLM(LLM):
     #     obj.indexName = kwargs["indexName"]
     #     obj.indexRoleDescription = kwargs["indexRoleDescription"]
     #     obj.systemPrompt = kwargs["systemPrompt"]
-    #     obj._history = []        
     
 #     Exception has occurred: AttributeError
 # 'WithDataLLM' object has no attribute '__fields_set__'
@@ -56,7 +55,6 @@ class WithDataLLM(LLM):
 #         self.indexName = kwargs["indexName"]
 #         self.indexRoleDescription = kwargs["indexRoleDescription"]
 #         self.systemPrompt = kwargs["systemPrompt"]
-#         self._history = []
 
     def _call(
         self,
@@ -144,3 +142,5 @@ class WithDataLLM(LLM):
     @property
     def _llm_type(self) -> str:
         return "WithDataLLM"
+
+# call example in ChatCompletionsWithLChain.py
