@@ -7,15 +7,10 @@ from langchain_core.language_models.llms import LLM
 from langchain_core.outputs import GenerationChunk
 
 class WithDataLLM(LLM):
-    openAIServiceName: str
-    deploymentName: str
-    openAIServiceKey: str
-    searchServiceName: str
-    searchApiKey: str
-    indexName: str
-    indexRoleDescription: str
     systemPrompt: str
-
+    url = ''
+    headers = {}
+    dataSources = {}
     
     # 'WithDataLLM' object has no attribute '__fields_set__'
     #   File "C:\Users\mrochon\source\repos\python\common\custom.py", line 22, in __new__
@@ -36,50 +31,28 @@ class WithDataLLM(LLM):
     #     obj.indexRoleDescription = kwargs["indexRoleDescription"]
     #     obj.systemPrompt = kwargs["systemPrompt"]
     
-#     Exception has occurred: AttributeError
-# 'WithDataLLM' object has no attribute '__fields_set__'
-#   File "C:\Users\mrochon\source\repos\python\common\custom.py", line 21, in __init__
-#     self.openAIServiceName = kwargs["openAIServiceName"]
-#     ^^^^^^^^^^^^^^^^^^^^^^
-#   File "C:\Users\mrochon\source\repos\python\chatCompletionsWithLChain.py", line 65, in <module>
-#     llm = WithDataLLM(
-#           ^^^^^^^^^^^^
-# AttributeError: 'WithDataLLM' object has no attribute '__fields_set__'
-
-#     def __init__(self, **kwargs: Any) -> None:
-#         self.openAIServiceName = kwargs["openAIServiceName"]
-#         self.deploymentName = kwargs["deploymentName"]
-#         self.openAIServiceKey = kwargs["openAIServiceKey"]
-#         self.searchServiceName = kwargs["searchServiceName"]
-#         self.searchApiKey = kwargs["searchApiKey"]
-#         self.indexName = kwargs["indexName"]
-#         self.indexRoleDescription = kwargs["indexRoleDescription"]
-#         self.systemPrompt = kwargs["systemPrompt"]
-
-    def _call(
-        self,
-        prompt: str,
-        stop: Optional[List[str]] = None,
-        run_manager: Optional[CallbackManagerForLLMRun] = None,
-        **kwargs: Any,
-    ) -> str:
-        if stop is not None:
-            raise ValueError("stop kwargs are not permitted.")
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)   
+        openAIServiceName = kwargs["openAIServiceName"]
+        deploymentName = kwargs["deploymentName"]
+        openAIServiceKey = kwargs["openAIServiceKey"]
+        searchServiceName = kwargs["searchServiceName"]
+        searchApiKey = kwargs["searchApiKey"]
+        indexName = kwargs["indexName"]
+        indexRoleDescription = kwargs["indexRoleDescription"]
         
-        # object has no field _history!
-        # if self._history is None:
-        #     self._history = []
-        url = f"{self.openAIServiceName}/openai/deployments/{self.deploymentName}/chat/completions?api-version=2024-02-01"
-        headers = {"api-key": self.openAIServiceKey, "Content-Type": "application/json"}
-        data_sources =     {
+        self.systemPrompt = kwargs["systemPrompt"]
+        self.url = f"{openAIServiceName}/openai/deployments/{deploymentName}/chat/completions?api-version=2024-02-01"
+        self.headers = {"api-key": openAIServiceKey, "Content-Type": "application/json"}
+        self.dataSources =     {
             "type": "azure_search", 
             "parameters": {
                 "authentication": {
                     "type": "api_key",
-                    "key": self.searchApiKey
+                    "key": searchApiKey
                 },
-                "endpoint": f"https://{self.searchServiceName}.search.windows.net",
-                "index_name": self.indexName,
+                "endpoint": f"https://{searchServiceName}.search.windows.net",
+                "index_name": indexName,
                 "fields_mapping": {
                     "content_fields": [
                         "chunk"
@@ -95,11 +68,26 @@ class WithDataLLM(LLM):
                 "top_n_documents": 5,
                 "query_type": "semantic",
                 "semantic_configuration": "manuals-semantic-configuration",                      
-                "role_information": self.indexRoleDescription,
+                "role_information": indexRoleDescription,
                 "filter": None,
                 "strictness": 3
             }
-        }
+        }        
+
+    def _call(
+        self,
+        prompt: str,
+        stop: Optional[List[str]] = None,
+        run_manager: Optional[CallbackManagerForLLMRun] = None,
+        **kwargs: Any,
+    ) -> str:
+        if stop is not None:
+            raise ValueError("stop kwargs are not permitted.")
+        
+        # object has no field _history!
+        # if self._history is None:
+        #     self._history = []
+
 
         payload = {
             "temperature": 0.0,
@@ -113,11 +101,11 @@ class WithDataLLM(LLM):
             "messages": [
                 {"role": "system", "content": self.systemPrompt }, # this should be donw in the constructor
                 {"role": "user", "content": prompt}],
-            "data_sources": [data_sources]
+            "data_sources": [self.dataSources]
         }
         with open("./temp/llm_request.json","w") as f:
             f.write(json.dumps(payload, indent=2))
-        response = requests.post(url, json=payload, headers=headers, verify=False)
+        response = requests.post(self.url, json=payload, headers=self.headers, verify=False)
         response.raise_for_status()
         user_data = response.json()
         with open("./temp/llm_response.json","w") as f:
