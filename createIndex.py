@@ -73,6 +73,9 @@ createObject('index', os.environ["INDEX_NAME"])
 createObject('skillset', os.environ["SKILLSET_NAME"])
 createObject('indexer', os.environ["INDEXER_NAME"])
 
+# For indexer schedule use ISO 8601 Durations, e.g. PT1H for 1 hour
+# https://en.wikipedia.org/wiki/ISO_8601#Durations
+
 
 
 
