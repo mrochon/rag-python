@@ -120,7 +120,7 @@ Some comments:
 
 (Number is captioned object area * (1 + recognition confidence))
 
-###[Image 1](https://i.etsystatic.com/51286668/r/il/27eaed/6014488641/il_1588xN.6014488641_bybu.jpg)
+### [Image 1](https://i.etsystatic.com/51286668/r/il/27eaed/6014488641/il_1588xN.6014488641_bybu.jpg)
 3540664.4424562454 a white t-shirt with a logo on it
 3323911.0958576202 a white shirt with a logo on it
 1638713.3676481247 a white t-shirt with a logo on it
@@ -132,7 +132,7 @@ Some comments:
 9098.866596221924 a blue square with black lines
 8100.673599243164 a close up of an orange square
 
-###[Image 2]:(https://mobileimages.lowes.com/productimages/cf75cdca-e41f-42f6-857f-aa49a5b10675/12161585.jpg)
+### [Image 2]:(https://mobileimages.lowes.com/productimages/cf75cdca-e41f-42f6-857f-aa49a5b10675/12161585.jpg)
 1749111.6523742676 a can of paint with a white label
 1163405.9780507088 a can of paint with a label
 158812.61454582214 a close-up of a silver plate
@@ -144,11 +144,11 @@ Some comments:
 10311.295795440674 a blue sign with white letters
 8493.588054478168 a letter on a white surface
 
-###[Image 3](https://cdnimg.webstaurantstore.com/images/products/large/758110/2572441.jpg)
+### [Image 3](https://cdnimg.webstaurantstore.com/images/products/large/758110/2572441.jpg)
 656463.189125061 a screwdriver with yellow handle
 507116.565787375 a screwdriver with a yellow handle
 
-###[Image 4](https://cdnimg.webstaurantstore.com/images/products/large/568760/2638325.jpg)
+### [Image 4](https://cdnimg.webstaurantstore.com/images/products/large/568760/2638325.jpg)
 621655.7550430298 a blue machine with a fan
 518628.0614397526 a blue fan with a black circle
 99585.67106813192 a blue box with metal grate
