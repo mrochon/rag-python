@@ -107,6 +107,52 @@ Could be done as [Git Codespace except](https://docs.github.com/en/codespaces/se
 ```
 py -m venv C:\Users\mrochon\source\repos\python 
 ```
+## Vision sample
+
+visionCaption.py uses Azure Vision 4.0 REST API to create captions for objects found in a picture. It then sorts these captions by 'significance' - size of the object multiplied by recognition confidence + 1 (arbitrary way of increasing significance of confidence level). Below is the list it produced.
+
+Some comments:
+
+1. Brand extraction seems not supported in 4.0, requires 3.2 and does not seem very reliable.
+2. Possible to train model with own brands
+3. Do not use blob urls with SAS - you will get a misleading error message (wrong API key or API version)
+4. There are two Vision services exposed in the market place: Custom Vision and Azure Vision. The former allows model training. Same API.
+
+```
+[Image 1](https://i.etsystatic.com/51286668/r/il/27eaed/6014488641/il_1588xN.6014488641_bybu.jpg)
+3540664.4424562454 a white t-shirt with a logo on it
+3323911.0958576202 a white shirt with a logo on it
+1638713.3676481247 a white t-shirt with a logo on it
+84935.92342960835 a close up of a logo
+52640.99776518345 a wooden object with a black background
+47312.44461965561 a close-up of a sign
+22299.354930639267 a close up of a sign
+21066.452381253242 a close up of a colorful square
+9098.866596221924 a blue square with black lines
+8100.673599243164 a close up of an orange square
+
+[Image 2]:(https://mobileimages.lowes.com/productimages/cf75cdca-e41f-42f6-857f-aa49a5b10675/12161585.jpg)
+1749111.6523742676 a can of paint with a white label
+1163405.9780507088 a can of paint with a label
+158812.61454582214 a close-up of a silver plate
+81225.97669053078 a close up of a logo
+65803.13216209412 a close up of a sign
+46963.74707400799 a blue letter on a white surface
+34378.030671179295 a blue shield with white text
+32410.553058743477 a close up of a label
+10311.295795440674 a blue sign with white letters
+8493.588054478168 a letter on a white surface
+
+[Image 3](https://cdnimg.webstaurantstore.com/images/products/large/758110/2572441.jpg)
+656463.189125061 a screwdriver with yellow handle
+507116.565787375 a screwdriver with a yellow handle
+
+[Image 4](https://cdnimg.webstaurantstore.com/images/products/large/568760/2638325.jpg)
+621655.7550430298 a blue machine with a fan
+518628.0614397526 a blue fan with a black circle
+99585.67106813192 a blue box with metal grate
+93088.14066690207 a close-up of a vent
+```
 
 ## questionss
 
