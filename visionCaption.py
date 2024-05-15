@@ -23,6 +23,7 @@ def get_size(obj):
 # &visualFeatures=brands seems to be only in 3.2, not 4.0; use training to add brands?
 # url = "https://eastus.api.cognitive.microsoft.com/vision/v3.2/analyze?visualFeatures=brands"
 url = f"{VISION_URL}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=denseCaptions"
+n = 1
 for image in images:
     if image.startswith('file:'):
         with open(image[5:], 'rb') as f:
@@ -35,7 +36,14 @@ for image in images:
         response = requests.post(url=url, json=image_params, headers={"Content-Type": "application/json", "Ocp-Apim-Subscription-Key": VISION_API_KEY})
     objects = response.json()
     sorted_objects = sorted(objects["denseCaptionsResult"]["values"], key=get_size, reverse=True)
-    print(f"Image: {image}")
+    print(f"[Image {n}]({image})")
+    n += 1
+    highest_confidence = get_size(sorted_objects[0])
     for obj in sorted_objects:
-        print(get_size(obj), obj['text'])
+        confidence = get_size(obj)
+        if confidence < highest_confidence / 2:
+            print("- Low confidence, stopping")
+            break
+        highest_confidence = confidence
+        print(f"- {int(get_size(obj))} - {obj['text']}")
     print()
