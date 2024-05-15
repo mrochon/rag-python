@@ -25,7 +25,6 @@ def get_size(obj):
 url = f"{VISION_URL}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=denseCaptions"
 for image in images:
     if image.startswith('file:'):
-        file_name = image[5:]
         with open(image[5:], 'rb') as f:
             data = f.read()
         response = requests.post(url=url, data=data, headers={"Content-Type": "application/octet-stream", "Ocp-Apim-Subscription-Key": VISION_API_KEY})
