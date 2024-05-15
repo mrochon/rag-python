@@ -9,6 +9,7 @@ VISION_URL = os.environ["VISION_URL"]
 VISION_API_KEY = os.environ["VISION_API_KEY"]
 
 images = [
+    'file:./data/screwdriver.png',
     "https://i.etsystatic.com/51286668/r/il/27eaed/6014488641/il_1588xN.6014488641_bybu.jpg",
     "https://mobileimages.lowes.com/productimages/cf75cdca-e41f-42f6-857f-aa49a5b10675/12161585.jpg",
     "https://cdnimg.webstaurantstore.com/images/products/large/758110/2572441.jpg",
@@ -23,10 +24,16 @@ def get_size(obj):
 # url = "https://eastus.api.cognitive.microsoft.com/vision/v3.2/analyze?visualFeatures=brands"
 url = f"{VISION_URL}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=denseCaptions"
 for image in images:
-    image_params = {
-        "url": image
-    }
-    response = requests.post(url=url, json=image_params, headers={"Content-Type": "application/json", "Ocp-Apim-Subscription-Key": VISION_API_KEY})
+    if image.startswith('file:'):
+        file_name = image[5:]
+        with open(image[5:], 'rb') as f:
+            data = f.read()
+        response = requests.post(url=url, data=data, headers={"Content-Type": "application/octet-stream", "Ocp-Apim-Subscription-Key": VISION_API_KEY})
+    else:
+        image_params = {
+            "url": image
+        }
+        response = requests.post(url=url, json=image_params, headers={"Content-Type": "application/json", "Ocp-Apim-Subscription-Key": VISION_API_KEY})
     objects = response.json()
     sorted_objects = sorted(objects["denseCaptionsResult"]["values"], key=get_size, reverse=True)
     print(f"Image: {image}")
