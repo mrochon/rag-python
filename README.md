@@ -118,6 +118,8 @@ Some comments:
 3. Do not use blob urls with SAS - you will get a misleading error message (wrong API key or API version)
 4. There are two Vision services exposed in the market place: Custom Vision and Azure Vision. The former allows model training. Same API.
 
+(Number is captioned object area * (1 + recognition confidence))
+
 ```
 [Image 1](https://i.etsystatic.com/51286668/r/il/27eaed/6014488641/il_1588xN.6014488641_bybu.jpg)
 3540664.4424562454 a white t-shirt with a logo on it
