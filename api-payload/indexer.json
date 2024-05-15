@@ -26,6 +26,11 @@
           "name": "base64Encode",
           "parameters": null
         }
+      },
+      {
+        "sourceFieldName": "Sensitivity",
+        "targetFieldName": "sensitivity",
+        "mappingFunction": null
       }
     ],
     "encryptionKey": null

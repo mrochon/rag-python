@@ -61,6 +61,16 @@
       "synonymMaps": []
     },
     {
+      "name": "sensitivity",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false
+    },    
+    {
       "name": "metadata_creation_date",
       "type": "Edm.DateTimeOffset",
       "searchable": false,

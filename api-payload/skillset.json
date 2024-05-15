@@ -101,11 +101,14 @@
                 {
                     "name": "pii_entities",
                     "source": "/document/chunks/*/pii_entities"
-                }
-                ,
+                },
                 {
                     "name": "masked_text",
                     "source": "/document/chunks/*/masked_text"
+                },
+                {
+                    "name": "sensitivity",
+                    "source": "/document/sensitivity"
                 }
             ]
         }
