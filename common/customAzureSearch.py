@@ -17,19 +17,19 @@ def get_search_results(query: str, indexes: list, token: str,
     """Performs multi-index hybrid search and returns ordered dictionary with the combined results"""
     
     headers = {'Content-Type': 'application/json', 'Authorization': f"Bearer {token}"}
-    params = {'api-version': os.environ['SEARCH_API_VERSION']}
+    params = {'api-version': "2024-03-01-preview"}
 
     agg_search_results = dict()
     
     for index in indexes:
         search_payload = {
             "search": query,
-            "select": "id, title, chunk, name, location",
+            "select": "id, uri, chunk",
             "queryType": "semantic",
             "vectorQueries": [{"text": query, "fields": "chunkVector", "kind": "text", "k": k}],
-            "semanticConfiguration": "my-semantic-config",
+            "semanticConfiguration": "manuals-semantic-configuration",
             "captions": "extractive",
-            "answers": "extractive",
+            "answers": "extractive|count-3",
             "count":"true",
             "top": k    
         }
@@ -47,10 +47,8 @@ def get_search_results(query: str, indexes: list, token: str,
         for result in search_results['value']:
             if result['@search.rerankerScore'] > reranker_threshold: # Show results that are at least N% of the max possible score=4
                 content[result['id']]={
-                                        "title": result['title'], 
-                                        "name": result['name'], 
+                                        "uri": result['uri'], 
                                         "chunk": result['chunk'],
-                                        "location": result['location'],
                                         "caption": result['@search.captions'][0]['text'],
                                         "score": result['@search.rerankerScore'],
                                         "index": index
