@@ -41,9 +41,9 @@ EMBEDDINGS_MODEL=<embedding deployment name>
 OPENAI_API_KEY=...
 SEARCH_API_KEY="<Search API key>"
 AI_SERVICE_KEY="<API key for Azure Cognitive Service>"
-TENANT_ID="<Entra tenant id>"
-CLIENT_ID="<Confidential client id>"
-CLIENT_SECRET="<Confidential client secret>"
+AZURE_TENANT_ID="<Entra tenant id>"
+AZURE_CLIENT_ID="<Confidential client id>"
+AZURE_CLIENT_SECRET="<Confidential client secret>"
 ```
 
 ### PIP Installs

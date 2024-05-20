@@ -7,9 +7,9 @@ import json
 dotenv.load_dotenv('.env', verbose=True, override=True)
 
 INDEXER_NAME=os.environ.get("INDEXER_NAME")
-TENANT_ID = os.environ.get("TENANT_ID")
-CLIENT_ID = os.environ.get("CLIENT_ID")
-CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
+TENANT_ID = os.environ.get("AZURE_TENANT_ID")
+CLIENT_ID = os.environ.get("AZURE_CLIENT_ID")
+CLIENT_SECRET = os.environ.get("AZURE_CLIENT_SECRET")
 SEARCH_SERVICE_NAME = os.environ.get("SEARCH_SERVICE_NAME")
 SEARCH_API_KEY = os.environ.get("SEARCH_API_KEY")
 
