@@ -6,7 +6,7 @@ import time
 
 dotenv.load_dotenv(".env", verbose=True, override=True)
 
-OPENAI_ENDPOINT = os.environ.get("OPENAI_ENDPOINT")
+AZURE_OPENAI_ENDPOINT = os.environ.get("AZURE_OPENAI_ENDPOINT")
 OPEN_API_VERSION = os.environ.get("OPEN_API_VERSION", "2024-02-01")
 GTP_DEPLOYMENT = os.environ.get("GTP_DEPLOYMENT")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
@@ -38,7 +38,7 @@ chatCompletion["data_sources"] = [
     }
 ]
 
-rest_url = f"{OPENAI_ENDPOINT}/openai/deployments/{GTP_DEPLOYMENT}/chat/completions?api-version={OPEN_API_VERSION}"
+rest_url = f"{AZURE_OPENAI_ENDPOINT}/openai/deployments/{GTP_DEPLOYMENT}/chat/completions?api-version={OPEN_API_VERSION}"
 headers = {"api-key": OPENAI_API_KEY, "Content-Type": "application/json"}
 
 while True:

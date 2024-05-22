@@ -61,7 +61,7 @@
       "name": "#3",
       "description": null,
       "context": "/document/chunks/*",
-      "resourceUri": "OPENAI_ENDPOINT",
+      "resourceUri": "AZURE_OPENAI_ENDPOINT",
       "apiKey": "OPENAI_API_KEY",
       "deploymentId": "EMBEDDINGS_MODEL",
       "inputs": [

@@ -10,6 +10,7 @@ VISION_API_KEY = os.environ["VISION_API_KEY"]
 
 images = [
     'file:./data/screwdriver.png',
+    'file:./data/list.png',
     "https://i.etsystatic.com/51286668/r/il/27eaed/6014488641/il_1588xN.6014488641_bybu.jpg",
     "https://mobileimages.lowes.com/productimages/cf75cdca-e41f-42f6-857f-aa49a5b10675/12161585.jpg",
     "https://cdnimg.webstaurantstore.com/images/products/large/758110/2572441.jpg",
@@ -44,6 +45,6 @@ for image in images:
         if confidence < highest_confidence / 2:
             print("- Low confidence, stopping")
             break
-        highest_confidence = confidence
+        #highest_confidence = confidence
         print(f"- {int(get_size(obj))} - {obj['text']}")
     print()

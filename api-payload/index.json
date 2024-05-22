@@ -265,7 +265,7 @@
         "name": "manuals-vectorizer",
         "kind": "azureOpenAI",
         "azureOpenAIParameters": {
-          "resourceUri": "OPENAI_ENDPOINT",
+          "resourceUri": "AZURE_OPENAI_ENDPOINT",
           "deploymentId": "EMBEDDINGS_MODEL",
           "apiKey": "OPENAI_API_KEY",
           "authIdentity": null

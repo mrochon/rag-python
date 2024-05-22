@@ -3,7 +3,7 @@ from openai import AzureOpenAI
 import json
 
 client = AzureOpenAI(
-  azure_endpoint = os.getenv("OPENAI_ENDPOINT"), 
+  azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT"), 
   api_key=os.getenv("OPENAI_API_KEY"),  
   api_version="2024-03-01-preview"
 )

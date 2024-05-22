@@ -13,7 +13,7 @@ from common.custom import (
 
 dotenv.load_dotenv()
 
-OPENAI_ENDPOINT = os.environ.get("OPENAI_ENDPOINT")
+AZURE_OPENAI_ENDPOINT = os.environ.get("AZURE_OPENAI_ENDPOINT")
 GTP_DEPLOYMENT = os.environ.get("GTP_DEPLOYMENT")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 INDEX_NAME=os.environ.get("INDEX_NAME")
@@ -24,7 +24,7 @@ os.environ["OPENAI_API_VERSION"] = os.environ["AZURE_OPENAI_API_VERSION"]
 
 COMPLETION_TOKENS = 4000
 # llm = AzureChatOpenAI(deployment_name=os.environ["GTP_DEPLOYMENT"], 
-#                       azure_endpoint = OPENAI_ENDPOINT,
+#                       azure_endpoint = AZURE_OPENAI_ENDPOINT,
 #                       temperature=0.8,
 #                       max_tokens=COMPLETION_TOKENS)
 
@@ -64,7 +64,7 @@ template = """
 
 llm = WithDataLLM(
   systemPrompt = sysPrompt,
-  openAIServiceName=OPENAI_ENDPOINT, 
+  openAIServiceName=AZURE_OPENAI_ENDPOINT, 
   openAIServiceKey=OPENAI_API_KEY, 
   deploymentName=GTP_DEPLOYMENT, 
   searchServiceName=SEARCH_SERVICE_NAME, 
