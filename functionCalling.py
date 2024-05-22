@@ -46,7 +46,7 @@ def run_conversation():
         }
     ]
     response = client.chat.completions.create(
-        model=os.getenv("GTP_DEPLOYMENT"), # MUST be 1106
+        model=os.getenv("GPT_DEPLOYMENT"), # MUST be 1106
         messages=messages,
         tools=tools,
         tool_choice="auto",  # auto is default, but we'll be explicit
@@ -79,7 +79,7 @@ def run_conversation():
                 }
             )  # extend conversation with function response
         second_response = client.chat.completions.create(
-            model=os.getenv("GTP_DEPLOYMENT"),
+            model=os.getenv("GPT_DEPLOYMENT"),
             messages=messages,
         )  # get a new response from the model where it can see the function response
         return second_response

@@ -8,7 +8,7 @@ dotenv.load_dotenv(".env", verbose=True, override=True)
 
 AZURE_OPENAI_ENDPOINT = os.environ.get("AZURE_OPENAI_ENDPOINT")
 OPEN_API_VERSION = os.environ.get("OPEN_API_VERSION", "2024-02-01")
-GTP_DEPLOYMENT = os.environ.get("GTP_DEPLOYMENT")
+GTP_DEPLOYMENT = os.environ.get("GPT_DEPLOYMENT")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 INDEX_NAME=os.environ.get("INDEX_NAME")
 SEARCH_SERVICE_NAME = os.environ.get("SEARCH_SERVICE_NAME")

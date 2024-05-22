@@ -6,7 +6,7 @@ import json
 dotenv.load_dotenv()
 
 AZURE_OPENAI_ENDPOINT = os.environ.get("AZURE_OPENAI_ENDPOINT")
-GTP_DEPLOYMENT = os.environ.get("GTP_DEPLOYMENT")
+GTP_DEPLOYMENT = os.environ.get("GPT_DEPLOYMENT")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 INDEX_NAME=os.environ.get("INDEX_NAME")
 SEARCH_SERVICE_NAME = os.environ.get("SEARCH_SERVICE_NAME")
@@ -61,7 +61,7 @@ while True:
     if user_input == 'q':
         break
     chatCompletion["messages"].append({"role": "user", "content": user_input})
-    with open("requestOK.json","w") as f:
+    with open(".\temp\requestOK.json","w") as f:
         f.write(json.dumps(chatCompletion, indent=2))    
     response = requests.post(url=rest_url, headers=headers, json=chatCompletion)
     if response.status_code == 200:

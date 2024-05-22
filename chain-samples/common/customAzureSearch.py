@@ -10,8 +10,14 @@ from langchain_core.documents import Document
 from operator import itemgetter
 from typing import List
 from azure.identity import DefaultAzureCredential
+from pydantic import BaseModel, PositiveInt
 
-def get_search_results(query: str, indexes: list, token: str,
+class QueryConfig(BaseModel):
+    index: str
+    topK: PositiveInt = 5
+    reranker_threshold: int = 1
+
+def get_search_results(query: str, configs: List[QueryConfig], token: str,
                        k: int = 5,
                        reranker_threshold: int = 1) -> List[dict]:
     """Performs multi-index hybrid search and returns ordered dictionary with the combined results"""
@@ -21,7 +27,7 @@ def get_search_results(query: str, indexes: list, token: str,
 
     agg_search_results = dict()
     
-    for index in indexes:
+    for config in configs:
         search_payload = {
             "search": query,
             "select": "uri, chunk",
@@ -34,11 +40,11 @@ def get_search_results(query: str, indexes: list, token: str,
             "top": k    
         }
 
-        resp = requests.post(f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net/indexes/{index}/docs/search",
+        resp = requests.post(f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net/indexes/{config.index}/docs/search",
                          data=json.dumps(search_payload), headers=headers, params=params)
 
         search_results = resp.json()
-        agg_search_results[index] = search_results
+        agg_search_results[config.index] = search_results
     
     content = dict()
     ordered_content = OrderedDict()
@@ -70,9 +76,7 @@ def get_search_results(query: str, indexes: list, token: str,
 
 class CustomAzureSearchRetriever(BaseRetriever):
     
-    indexes: List
-    topK : int
-    reranker_threshold : int
+    configs: List[QueryConfig]
     credential : DefaultAzureCredential
     
     
@@ -81,7 +85,7 @@ class CustomAzureSearchRetriever(BaseRetriever):
     ) -> List[Document]:
         
         token_resp = self.credential.get_token("https://search.azure.com/.default")
-        ordered_results = get_search_results(query, self.indexes, token_resp.token, k=self.topK, reranker_threshold=self.reranker_threshold, )
+        ordered_results = get_search_results(query, self.configs, token_resp.token)
         
         top_docs = []
         for key,value in ordered_results.items():
