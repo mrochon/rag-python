@@ -31,7 +31,11 @@ DOCSEARCH_PROMPT = ChatPromptTemplate.from_messages(
 
 cred = DefaultAzureCredential()
 index1 = {
-    "index": os.environ['INDEX_NAME']
+    "index": os.environ['INDEX_NAME'],
+    "selectFields": ["uri", "chunk"],
+    "queryType": "semantic",
+    "vectorFieldName": "chunkVector",
+    "semanticConfigurationName": "manuals-semantic-configuration",
 }
 retriever = CustomAzureSearchRetriever(
     configs=[

@@ -14,6 +14,10 @@ from pydantic import BaseModel, PositiveInt
 
 class QueryConfig(BaseModel):
     index: str
+    selectFields: List[str]
+    queryType: str
+    vectorFieldName: str
+    semanticConfigurationName: str
     topK: PositiveInt = 5
     reranker_threshold: int = 1
 
@@ -26,25 +30,25 @@ def get_search_results(query: str, configs: List[QueryConfig], token: str,
     params = {'api-version': "2024-03-01-preview"}
 
     agg_search_results = dict()
-    
     for config in configs:
         search_payload = {
             "search": query,
-            "select": "uri, chunk",
-            "queryType": "semantic",
-            "vectorQueries": [{"text": query, "fields": "chunkVector", "kind": "text", "k": k}],
-            "semanticConfiguration": "manuals-semantic-configuration",
+            "select": ",".join(config.selectFields),
+            "queryType": config.queryType,
+            "semanticConfiguration": config.semanticConfigurationName,
             "captions": "extractive",
             "answers": "extractive|count-3",
             "count":"true",
             "top": k    
         }
-
+        search_payload["vectorQueries"] = [{"text": query, "fields": config.vectorFieldName, "kind": "text", "k": k}]
         resp = requests.post(f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net/indexes/{config.index}/docs/search",
                          data=json.dumps(search_payload), headers=headers, params=params)
-
+        if resp.status_code != 200:
+            raise Exception(f"Search request failed with status code {json.loads(resp.text)['error']['message']}")
         search_results = resp.json()
         agg_search_results[config.index] = search_results
+
     
     content = dict()
     ordered_content = OrderedDict()
