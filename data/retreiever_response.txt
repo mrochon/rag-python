@@ -1,0 +1,7 @@
+Document(
+    page_content=\'the printing parameters according to\\n\\nindividual needs. We recommend using the default parameters and\\n\\nLONGER filaments to get the best printing results, please refer to\\n\\npage 11 to import the default settings.\\n\\n\\n\\nwww.longer3d.com support@longer3d.com22\\n\\n\\n\\nwww.longer3d.com support@longer3d.com23\\n\\n(4)Slice and save Gcode files\\n\\nClick Slice to generate G-code for printing.\\n\\nSave to removable drive (Save the gcode file to storage card). And\\n\\nthe software will evaluate the time required to print the file and the\\n\\nweight of filament.\\n\\nNOTE: “Save to removable drive” option will apear when microSD\\n\\ncard is inserted.\\n\\n(5)More\\n\\nA) Slice and preview\\n\\nClick the "Slice" button in the lower right corner of the software.\\n\\nAfter the slicing is finished, click the "preview" button to preview the\\n\\nsimulated printing effect in the preview view.\\n\\n\\n\\nwww.longer3d.com support@longer3d.com24\\n\\nB) Print online\\n\\nAfter the parameters have been set up, you can print online via\\n\\nCura.\',
+    metadata={
+        \'source\': \'https://ai84ad.blob.core.windows.net/manuals/LK5pro%20user%20manual%20v2.1.pdf\', 
+        \'score\': 2.4034159183502197
+        }
+    )
