@@ -29,6 +29,7 @@ def get_search_results(query: str, configs: List[QueryConfig], token: str,
     headers = {'Content-Type': 'application/json', 'Authorization': f"Bearer {token}"}
     params = {'api-version': "2024-03-01-preview"}
 
+    configIx = 0
     agg_search_results = dict()
     for config in configs:
         search_payload = {
@@ -47,23 +48,22 @@ def get_search_results(query: str, configs: List[QueryConfig], token: str,
         if resp.status_code != 200:
             raise Exception(f"Search request failed with status code {json.loads(resp.text)['error']['message']}")
         search_results = resp.json()
-        agg_search_results[config.index] = search_results
+        agg_search_results[configIx] = search_results
+        configIx += 1
 
-    
     content = dict()
     ordered_content = OrderedDict()
-    
     id = 0
-    for index,search_results in agg_search_results.items():
+    for configIx,search_results in agg_search_results.items():
         for result in search_results['value']:
             if result['@search.rerankerScore'] > reranker_threshold: # Show results that are at least N% of the max possible score=4
                 content[id]={
-                                "uri": result['uri'], 
-                                "chunk": result['chunk'],
                                 "caption": result['@search.captions'][0]['text'],
                                 "score": result['@search.rerankerScore'],
-                                "index": index
+                                "index": configs[configIx].index,
                             }
+                for field in configs[configIx].selectFields:
+                    content[id][field] = result[field]
                 id += 1
                 
 

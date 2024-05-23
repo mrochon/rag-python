@@ -8,8 +8,6 @@ from common.customAzureSearch import (CustomAzureSearchRetriever, QueryConfig)
 from azure.identity import DefaultAzureCredential
 
 dotenv.load_dotenv('.env', verbose=True, override=True)
-COMPLETION_TOKENS = 2500
-llm = AzureChatOpenAI(deployment_name=os.environ["GPT_DEPLOYMENT"], temperature=0.5, max_tokens=COMPLETION_TOKENS)
 
 DOCSEARCH_PROMPT_TEXT = """Answer the question thoroughly, based **ONLY** on the following context.
 You must include references to document sources in your answer.
@@ -29,6 +27,8 @@ DOCSEARCH_PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
+COMPLETION_TOKENS = 2500
+llm = AzureChatOpenAI(deployment_name=os.environ["GPT_DEPLOYMENT"], temperature=0.5, max_tokens=COMPLETION_TOKENS)
 cred = DefaultAzureCredential()
 index1 = {
     "index": os.environ['INDEX_NAME'],
