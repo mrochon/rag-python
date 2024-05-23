@@ -13,6 +13,7 @@ from azure.identity import DefaultAzureCredential
 from pydantic import BaseModel, PositiveInt
 
 class QueryConfig(BaseModel):
+    endpoint: str
     index: str
     selectFields: List[str] = None
     searchFields: List[str] = None
@@ -48,7 +49,8 @@ def get_search_results(query: str, configs: List[QueryConfig], token: str,
         }
         if config.vectorFieldName:
             search_payload["vectorQueries"] = [{"text": query, "fields": config.vectorFieldName, "kind": "text", "k": k}]
-        resp = requests.post(f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net/indexes/{config.index}/docs/search",
+        endpoint = config.endpoint.rstrip('/')
+        resp = requests.post(f"{endpoint}/indexes/{config.index}/docs/search",
                          data=json.dumps(search_payload), headers=headers, params=params)
         if resp.status_code != 200:
             raise Exception(f"Search request failed with status code {json.loads(resp.text)['error']['message']}")

@@ -30,19 +30,18 @@ DOCSEARCH_PROMPT = ChatPromptTemplate.from_messages(
 
 COMPLETION_TOKENS = 2500
 llm = AzureChatOpenAI(deployment_name=os.environ["GPT_DEPLOYMENT"], temperature=0.5, max_tokens=COMPLETION_TOKENS)
-cred = DefaultAzureCredential()
-index1 = {
-    "endpoint": f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net",
-    "index": os.environ['INDEX_NAME'],
-    "selectFields": ["uri", "chunk"],
-    "queryType": "semantic",
-    "vectorFieldName": "chunkVector",
-    "semanticConfigurationName": "manuals-semantic-configuration",
-}
-retriever = CustomAzureSearchRetriever(
-    configs=[
-        QueryConfig(**index1)
-    ], credential=cred)
+
+vector_store: AzureSearch = AzureSearch(
+    azure_search_endpoint=f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net",
+    # azure_search_key=vector_store_password, Using DefaultAzureCredential - AZURE_CLIENT_ID/..._SECRET/..._TENANT_ID
+    index_name=os.environ['INDEX_NAME'],
+
+)
+retriever = AzureSearch(
+    azure_search_endpoint=f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net",
+    azure_search_key=None,  # using DefalutAzureCredential - AZURE_CLIENT_ID/..._SECRET/..._TENANT_ID
+    index_name=os.environ['INDEX_NAME']
+)
 parser = StrOutputParser()
 chain = (
     {
