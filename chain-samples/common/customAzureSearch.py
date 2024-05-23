@@ -14,10 +14,12 @@ from pydantic import BaseModel, PositiveInt
 
 class QueryConfig(BaseModel):
     index: str
-    selectFields: List[str]
-    queryType: str
-    vectorFieldName: str
-    semanticConfigurationName: str
+    selectFields: List[str] = None
+    searchFields: List[str] = None
+    filter: str = None
+    queryType: str = "semantic"
+    vectorFieldName: str = None
+    semanticConfigurationName: str = None
     topK: PositiveInt = 5
     reranker_threshold: int = 1
 
@@ -34,7 +36,9 @@ def get_search_results(query: str, configs: List[QueryConfig], token: str,
     for config in configs:
         search_payload = {
             "search": query,
-            "select": ",".join(config.selectFields),
+            "select": ",".join(config.selectFields) if config.selectFields else None,
+            "searchFields": ",".join(config.searchFields) if config.searchFields else None,
+            "filter": config.filter,
             "queryType": config.queryType,
             "semanticConfiguration": config.semanticConfigurationName,
             "captions": "extractive",
@@ -42,7 +46,8 @@ def get_search_results(query: str, configs: List[QueryConfig], token: str,
             "count":"true",
             "top": k    
         }
-        search_payload["vectorQueries"] = [{"text": query, "fields": config.vectorFieldName, "kind": "text", "k": k}]
+        if config.vectorFieldName:
+            search_payload["vectorQueries"] = [{"text": query, "fields": config.vectorFieldName, "kind": "text", "k": k}]
         resp = requests.post(f"https://{os.environ['SEARCH_SERVICE_NAME']}.search.windows.net/indexes/{config.index}/docs/search",
                          data=json.dumps(search_payload), headers=headers, params=params)
         if resp.status_code != 200:
