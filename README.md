@@ -51,7 +51,7 @@ AZURE_CLIENT_SECRET="<Confidential client secret>"
 See *requirements.txt*
 
 ```
-pip install -r requirmeents.txt
+pip install -r requirements.txt
 ```
 
 ### Terminal env

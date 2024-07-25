@@ -2,7 +2,6 @@ python-dotenv
 openai
 langchain
 langchain-openai
-atlassian-python-api
 uuid
 tiktoken
 lxml
