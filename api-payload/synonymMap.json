@@ -1,0 +1,5 @@
+{
+    "name": "SYNONYM_MAP_NAME",
+    "format": "solr",
+    "synonyms": "GD=>Gobi\nGVD=>Great Victoria\nKD=>Kalahari\nMD=>Mojave\nSD=>Sahara\nSD=>Sonoran\nTPD=>The Pinnacles Desert"
+  }

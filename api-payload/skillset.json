@@ -64,6 +64,7 @@
       "resourceUri": "AZURE_OPENAI_ENDPOINT",
       "apiKey": "OPENAI_API_KEY",
       "deploymentId": "EMBEDDINGS_MODEL",
+      "modelName": "text-embedding-ada-002",
       "inputs": [
         {
           "name": "text",

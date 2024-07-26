@@ -44,7 +44,9 @@
       "indexAnalyzer": null,
       "searchAnalyzer": null,
       "analyzer": "standard.lucene",
-      "synonymMaps": []
+      "synonymMaps": [
+        "SYNONYM_MAP_NAME"
+      ]
     },
     {
       "name": "uri",
@@ -170,7 +172,6 @@
           "indexAnalyzer": null,
           "searchAnalyzer": null,
           "analyzer": null,
-
           "synonymMaps": []
         }
       ]
@@ -202,7 +203,7 @@
       "searchAnalyzer": null,
       "analyzer": null,
       "dimensions": 1536,
-      "vectorSearchProfile": "manuals-profile",
+      "vectorSearchProfile": "SUBJECT-profile",
       "synonymMaps": []
     }
   ],
@@ -220,10 +221,10 @@
     "b": null
   },
   "semantic": {
-    "defaultConfiguration": "manuals-semantic-configuration",
+    "defaultConfiguration": "SUBJECT-semantic-configuration",
     "configurations": [
       {
-        "name": "manuals-semantic-configuration",
+        "name": "SUBJECT-semantic-configuration",
         "prioritizedFields": {
           "titleField": {
             "fieldName": "uri"
@@ -241,7 +242,7 @@
   "vectorSearch": {
     "algorithms": [
       {
-        "name": "manuals-algorithm",
+        "name": "SUBJECT-algorithm",
         "kind": "hnsw",
         "hnswParameters": {
           "metric": "cosine",
@@ -254,19 +255,20 @@
     ],
     "profiles": [
       {
-        "name": "manuals-profile",
-        "algorithm": "manuals-algorithm",
-        "vectorizer": "manuals-vectorizer",
+        "name": "SUBJECT-profile",
+        "algorithm": "SUBJECT-algorithm",
+        "vectorizer": "SUBJECT-vectorizer",
         "compression": null
       }
     ],
     "vectorizers": [
       {
-        "name": "manuals-vectorizer",
+        "name": "SUBJECT-vectorizer",
         "kind": "azureOpenAI",
         "azureOpenAIParameters": {
           "resourceUri": "AZURE_OPENAI_ENDPOINT",
           "deploymentId": "EMBEDDINGS_MODEL",
+          "modelName": "text-embedding-ada-002",
           "apiKey": "OPENAI_API_KEY",
           "authIdentity": null
         },
