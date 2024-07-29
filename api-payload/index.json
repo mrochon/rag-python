@@ -63,10 +63,10 @@
       "synonymMaps": []
     },
     {
-      "name": "sensitivity",
+      "name": "title",
       "type": "Edm.String",
       "searchable": true,
-      "filterable": false,
+      "filterable": true,
       "retrievable": true,
       "sortable": false,
       "facetable": false,
@@ -207,7 +207,15 @@
       "synonymMaps": []
     }
   ],
-  "scoringProfiles": [],
+  "scoringProfiles": [
+    {  
+    "name":"desertName",
+    "text": {  
+      "weights": {  
+        "title": 5
+      }                              
+    }  
+  ],
   "corsOptions": null,
   "suggesters": [],
   "analyzers": [],

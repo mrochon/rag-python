@@ -28,8 +28,8 @@
         }
       },
       {
-        "sourceFieldName": "Sensitivity",
-        "targetFieldName": "sensitivity",
+        "sourceFieldName": "title",
+        "targetFieldName": "title",
         "mappingFunction": null
       }
     ],

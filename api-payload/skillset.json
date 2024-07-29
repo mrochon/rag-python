@@ -108,8 +108,8 @@
                     "source": "/document/chunks/*/masked_text"
                 },
                 {
-                    "name": "sensitivity",
-                    "source": "/document/sensitivity"
+                    "name": "title",
+                    "source": "/document/title"
                 }
             ]
         }
