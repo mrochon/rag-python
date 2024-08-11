@@ -37,7 +37,7 @@ index1 = {
     "selectFields": ["uri", "chunk"],
     "queryType": "semantic",
     "vectorFieldName": "chunkVector",
-    "semanticConfigurationName": "manuals-semantic-configuration",
+    "semanticConfigurationName": "semantic-configuration",
 }
 retriever = CustomAzureSearchRetriever(
     configs=[

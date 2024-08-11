@@ -34,7 +34,7 @@ chatCompletion["data_sources"] = [
                 "content_fields": [
                     "chunk"
                 ],
-                "title_field": None,
+                "title_field": "title",
                 "url_field": "uri",
                 "filepath_field": "uri",
                 "vector_fields": [
@@ -44,8 +44,8 @@ chatCompletion["data_sources"] = [
             "in_scope": False,
             "top_n_documents": 5,
             "query_type": "semantic",
-            "semantic_configuration": "manuals-semantic-configuration",                      
-            "role_information": "Reference manual for the Longer 3D printers and Citizen watches.",
+            "semantic_configuration": "semantic-configuration",                      
+            "role_information": "Documents about world deserts. Desert name is in the .",
             "filter": None,
             "strictness": 3
         }
@@ -61,12 +61,11 @@ while True:
     if user_input == 'q':
         break
     chatCompletion["messages"].append({"role": "user", "content": user_input})
-    with open(".\temp\requestOK.json","w") as f:
-        f.write(json.dumps(chatCompletion, indent=2))    
+     
     response = requests.post(url=rest_url, headers=headers, json=chatCompletion)
     if response.status_code == 200:
         user_data = response.json()
-        #print(json.dumps(user_data, indent=2))
+        print(json.dumps(user_data, indent=2))
         for choice in user_data["choices"]:
             print(f"{choice['message']['role']}: {choice['message']['content']}")
             for citation in choice["message"]["context"]["citations"]:

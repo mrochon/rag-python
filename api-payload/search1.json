@@ -10,7 +10,7 @@
       }
     ],
     "queryType": "semantic",
-    "semanticConfiguration": "manuals-semantic-configuration",
+    "semanticConfiguration": "semantic-configuration",
     "captions": "extractive",
     "answers": "extractive|count-3",
     "queryLanguage": "en-US"

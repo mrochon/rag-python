@@ -1,0 +1,23 @@
+Transform user input into Lucene query statements. The queries will be used to search an index about world deserts. 
+The index contains two searchable fields: title, containing the name of the desert and chunk with the description of the desert. 
+The same desert may have multiple entries with additional description data. Include a search string to apply to the description field if the user question has descriptive data. 
+Do not generate criteria for the title field if the user input does not specify the desert's name. 
+You can use the size field in the index to sort returned data by the area of the desert. 
+Request that the search returns only the title and the description in the response.
+If the question is not in English, translate the question to English before generating the search query. 
+If you cannot generate a search query, return just the number 0.`
+
+Wymien trzy najmniejsze pustynie. (Polish: List three smallest deserts)
+{  
+  "query": {  
+    "match_all": {}  
+  },  
+  "sort": [  
+    {  
+      "size": {  
+        "order": "asc"  
+      }  
+    }  
+  ],  
+  "size": 3  
+}  

@@ -6,6 +6,7 @@ import json
 
 dotenv.load_dotenv('.env', verbose=True, override=True)
 
+
 INDEXER_NAME=os.environ.get("INDEXER_NAME")
 TENANT_ID = os.environ.get("AZURE_TENANT_ID")
 CLIENT_ID = os.environ.get("AZURE_CLIENT_ID")
@@ -44,13 +45,14 @@ with open(file_path, "r") as file:
         variables.append((key, value))
 
 
+
+
 def handleResponse(response):
     if response.status_code == 200 or response.status_code == 201 or response.status_code == 204:
         print("Ok")
     else:
         sys.exit(f"Error calling Azure Search API: {response.status_code} - {response.text}")
 
-# Error in Vectorizer 'deserts-vectorizer' : 'modelName' parameter is required in API version '2024-07-01'
 def createObject(objectType, objectName):
     print(f"Creating {objectType}")
     if objectType == "index":
@@ -70,11 +72,11 @@ def createObject(objectType, objectName):
 
 # Note: updating an index does not delete existing index data. Only way to delete the data is to delete the index
 
-createObject('datasource', os.environ["DATA_SOURCE_NAME"])  
-createObject('synonymmap', os.environ["SYNONYM_MAP_NAME"])  
+# createObject('datasource', os.environ["DATA_SOURCE_NAME"])  
+# createObject('synonymmap', os.environ["SYNONYM_MAP_NAME"])  
 createObject('index', os.environ["INDEX_NAME"])   
-createObject('skillset', os.environ["SKILLSET_NAME"])
-createObject('indexer', os.environ["INDEXER_NAME"])
+# createObject('skillset', os.environ["SKILLSET_NAME"])
+# createObject('indexer', os.environ["INDEXER_NAME"])
 
 # For indexer schedule use ISO 8601 Durations, e.g. PT1H for 1 hour
 # https://en.wikipedia.org/wiki/ISO_8601#Durations

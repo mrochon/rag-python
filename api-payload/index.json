@@ -203,18 +203,19 @@
       "searchAnalyzer": null,
       "analyzer": null,
       "dimensions": 1536,
-      "vectorSearchProfile": "SUBJECT-profile",
+      "vectorSearchProfile": "profile",
       "synonymMaps": []
     }
   ],
   "scoringProfiles": [
     {  
-    "name":"desertName",
-    "text": {  
-      "weights": {  
-        "title": 5
-      }                              
-    }  
+      "name":"desertName",
+      "text": {  
+        "weights": {  
+          "title": 5
+        }                              
+      } 
+    } 
   ],
   "corsOptions": null,
   "suggesters": [],
@@ -229,10 +230,10 @@
     "b": null
   },
   "semantic": {
-    "defaultConfiguration": "SUBJECT-semantic-configuration",
+    "defaultConfiguration": "semantic-configuration",
     "configurations": [
       {
-        "name": "SUBJECT-semantic-configuration",
+        "name": "semantic-configuration",
         "prioritizedFields": {
           "titleField": {
             "fieldName": "uri"
@@ -250,7 +251,7 @@
   "vectorSearch": {
     "algorithms": [
       {
-        "name": "SUBJECT-algorithm",
+        "name": "algorithm",
         "kind": "hnsw",
         "hnswParameters": {
           "metric": "cosine",
@@ -263,15 +264,15 @@
     ],
     "profiles": [
       {
-        "name": "SUBJECT-profile",
-        "algorithm": "SUBJECT-algorithm",
-        "vectorizer": "SUBJECT-vectorizer",
+        "name": "profile",
+        "algorithm": "algorithm",
+        "vectorizer": "vectorizer",
         "compression": null
       }
     ],
     "vectorizers": [
       {
-        "name": "SUBJECT-vectorizer",
+        "name": "vectorizer",
         "kind": "azureOpenAI",
         "azureOpenAIParameters": {
           "resourceUri": "AZURE_OPENAI_ENDPOINT",

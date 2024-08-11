@@ -67,7 +67,7 @@ class WithDataLLM(LLM):
                 "in_scope": False,
                 "top_n_documents": 5,
                 "query_type": "semantic",
-                "semantic_configuration": "manuals-semantic-configuration",                      
+                "semantic_configuration": "semantic-configuration",                      
                 "role_information": indexRoleDescription,
                 "filter": None,
                 "strictness": 3

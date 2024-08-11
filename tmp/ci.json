@@ -221,10 +221,10 @@
         "b": null
     },
     "semantic": {
-        "defaultConfiguration": "deserts-semantic-configuration",
+        "defaultConfiguration": "semantic-configuration",
         "configurations": [
             {
-                "name": "deserts-semantic-configuration",
+                "name": "semantic-configuration",
                 "prioritizedFields": {
                     "titleField": {
                         "fieldName": "uri"
@@ -242,7 +242,7 @@
     "vectorSearch": {
         "algorithms": [
             {
-                "name": "deserts-algorithm",
+                "name": "algorithm",
                 "kind": "hnsw",
                 "hnswParameters": {
                     "metric": "cosine",
@@ -255,7 +255,7 @@
         ],
         "profiles": [
             {
-                "name": "deserts-profile",
+                "name": "profile",
                 "algorithm": "deserts-algorithm",
                 "vectorizer": "deserts-vectorizer",
                 "compression": null
@@ -263,7 +263,7 @@
         ],
         "vectorizers": [
             {
-                "name": "deserts-vectorizer",
+                "name": "vectorizer",
                 "kind": "azureOpenAI",
                 "azureOpenAIParameters": {
                     "resourceUri": "https://mrai.openai.azure.com/",
