@@ -1,0 +1,10 @@
+Extract entinty names from the user input and use them to search for data. Format
+your response as a json object with the entities as a comma separated string as value
+of the 'search' property.
+
+Examle 1:
+User input: Summarize what desert exist in Asia
+Your response:
+{
+    "search": "Asia, desert"
+}
