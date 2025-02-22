@@ -1,0 +1,158 @@
+<h1 id="document-indexing">Document indexing</h1>
+<h2 id="purpose">Purpose</h2>
+<p>Create and populate Azure Search index with data from pdf files stored in blob storage. Provide simple chat interface to conduct q&amp;a with OpenAI and Search to get answers to questions related to the stored documents.</p>
+<h2 id="operation">Operation</h2>
+<p>See <a href="https://code.visualstudio.com/docs/python/environments">VSCode environment setup documentation</a> to prepare your propject.</p>
+<ol>
+<li>Create a datasource in Azure Search to read your pdfs from a blob container</li>
+<li>Register a confidential client app in Entra ID and give it Search Index Contributor permission</li>
+<li>Setup your py environment with this repo, see <a href="https://code.visualstudio.com/docs/python/environments">VSCode environment setup documentation</a>.</li>
+<li>Update <em>.env</em> file (see below) with your own settings</li>
+<li>Execute createIndex.py to create an index, skillset and indexer</li>
+<li>Run chatCompletions.py to enter questions and received answers from OpenAI</li>
+<li>Use Azure portal Azure Search Index view to execute queries</li>
+</ol>
+<p>The skillset chunks the pdf docs into pages, hides some PII data, vectorizes the text content and uploads chunk to secondary index (document goes to primary).</p>
+<h2 id="environment-setup">Environment Setup</h2>
+<h3 id="portal">Portal</h3>
+<p>Grant Search Service Contributor to a Service Principal and allow index to use RBAc for authorization (key is default).
+Enable Semantic Ranker plan on the index.</p>
+<h3 id="variables">Variables</h3>
+<p>Following environment variables need to be created in the .env file:</p>
+<pre><code><span class="hljs-attr">DATA_SOURCE_NAME</span>=<span class="hljs-string">"&lt;anem of an existing Azure Search Data Source&gt;"</span>
+<span class="hljs-attr">INDEX_NAME</span>=&lt;name of Azure Search Index&gt;
+<span class="hljs-attr">INDEXER_NAME</span>=<span class="hljs-string">"&lt;name of an indexer to create&gt;"</span>
+<span class="hljs-attr">SKILLSET_NAME</span>=<span class="hljs-string">"&lt;name of a skillset to create&gt;"</span>
+<span class="hljs-attr">SEARCH_SERVICE_NAME</span>=<span class="hljs-string">"&lt;name of Azure Search Service&gt;"</span>
+<span class="hljs-attr">AZURE_OPENAI_ENDPOINT</span>=https://&lt;your ep&gt;.openai.azure.com/
+<span class="hljs-attr">GTP_DEPLOYMENT</span>=<span class="hljs-string">"gtp-35-turbo-16k"</span>
+<span class="hljs-attr">EMBEDDINGS_MODEL</span>=&lt;embedding deployment name&gt;
+<span class="hljs-attr">OPENAI_API_KEY</span>=...
+<span class="hljs-attr">SEARCH_API_KEY</span>=<span class="hljs-string">"&lt;Search API key&gt;"</span>
+<span class="hljs-attr">AI_SERVICE_KEY</span>=<span class="hljs-string">"&lt;API key for Azure Cognitive Service&gt;"</span>
+<span class="hljs-attr">AZURE_TENANT_ID</span>=<span class="hljs-string">"&lt;Entra tenant id&gt;"</span>
+<span class="hljs-attr">AZURE_CLIENT_ID</span>=<span class="hljs-string">"&lt;Confidential client id&gt;"</span>
+<span class="hljs-attr">AZURE_CLIENT_SECRET</span>=<span class="hljs-string">"&lt;Confidential client secret&gt;"</span>
+</code></pre><h3 id="pip-installs">PIP Installs</h3>
+<p>See <em>requirements.txt</em></p>
+<pre><code>pip <span class="hljs-keyword">install</span> -r requirements.txt
+</code></pre><h3 id="terminal-env">Terminal env</h3>
+<p><code>python -m venv .venv</code></p>
+<h3 id="install-tesseract-for-confluence-documenting-reading-">Install Tesseract for Confluence documenting reading**</h3>
+<p>If planning to read Confluence data:
+<a href="https://stackoverflow.com/questions/50951955/pytesseract-tesseractnotfound-error-tesseract-is-not-installed-or-its-not-i">Error explanation</a> and <a href="https://stackoverflow.com/questions/50655738/how-do-i-resolve-a-tesseractnotfounderror">this</a></p>
+<p><a href="https://github.com/UB-Mannheim/tesseract/wiki">Install .exe for Confluence data reading</a>
+<em>Make sure to add this to PATH env variable</em></p>
+<pre><code>C:<span class="hljs-symbol">\U</span>sers<span class="hljs-symbol">\m</span>rochon<span class="hljs-symbol">\A</span>ppData<span class="hljs-symbol">\L</span>ocal<span class="hljs-symbol">\P</span>rograms<span class="hljs-symbol">\T</span>esseract-OCR
+</code></pre><pre><code>pip <span class="hljs-keyword">install</span> pytesseract Pillow
+pip <span class="hljs-keyword">install</span> pytesseract
+</code></pre><h2 id="code-examples">Code examples</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/createIndex.py">createIndex.py</a></td>
+<td>Create new datasource, index, skillset and indexer</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/chatCompletions.py">chatCompletions.py</a></td>
+<td>Simple REST based chat completion</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/chatCompletionsStream.py">chatCompletionsStream.py</a></td>
+<td>REST based chat completion with response streaming</td>
+</tr>
+<tr>
+<td>---other---</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/confluenceDocReader.py">confluenceDocReader.py</a></td>
+<td>Reads data from Confluence</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/chunkRecursive.py">chunkRecursive.py</a></td>
+<td>Break text into chunks using recursive chunking</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/chunkText.py">chunkText.py</a></td>
+<td>Break text into chunks (<a href="https://python.langchain.com/docs/modules/data_connection/document_transformers/semantic-chunker/">using semantic chunking</a>)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/vectorize.py">vectorize.py</a></td>
+<td>Create embedding vectors from text</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/createIndex.py">createIndex.py</a></td>
+<td>Create Azure Search index <a href="https://learn.microsoft.com/en-us/rest/api/searchservice/indexes/create?view=rest-searchservice-2023-11-01&amp;tabs=HTTP">using REST call</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/mrochon/python/blob/main/loadSampleDocs.py">loadSampleDocs.py</a></td>
+<td>Load some docs to Azure Index (chunk, vectorize, upload) <a href="hhttps://learn.microsoft.com/en-us/rest/api/searchservice/documents/?view=rest-searchservice-2023-11-01&amp;tabs=HTTP">using REST call</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="references-">References:</h2>
+<ol>
+<li><a href="https://safjan.com/from-fixed-size-to-nlp-chunking-a-deep-dive-into-text-chunking-techniques/#google_vignette">Krystian Safjan&#39;s Chunking strategies</a></li>
+<li><a href="https://medium.com/aimonks/chunking-strategies-for-more-effective-rag-through-llm-63ae7b046b46">Carlo C. Chunking strategies</a></li>
+<li><a href="https://github.com/Azure/azure-rest-api-specs/blob/main/specification/cognitiveservices/data-plane/AzureOpenAI/inference/stable/2024-02-01/inference.json">OpenAI REST API</a></li>
+<li><a href="https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/app/backend/app.py">Py app sample</a></li>
+</ol>
+<h2 id="environment">Environment</h2>
+<p>Use local python environment (@command:python.createEnvironment).</p>
+<p>Could be done as <a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces">Git Codespace except</a> Tesserac requires own .exe, would need a new image.</p>
+<pre><code>py -m venv C:<span class="hljs-symbol">\U</span>sers<span class="hljs-symbol">\m</span>rochon<span class="hljs-symbol">\s</span>ource<span class="hljs-symbol">\r</span>epos<span class="hljs-symbol">\p</span>ython
+</code></pre><h2 id="vision-sample">Vision sample</h2>
+<p><a href="https://github.com/mrochon/rag-python/blob/main/visionCaption.py">visionCaption.py</a> uses Azure Vision 4.0 REST API to create captions for objects found in a picture. It then sorts these captions by &#39;significance&#39; - size of the object multiplied by recognition confidence + 1 (arbitrary way of increasing significance of confidence level). Below is the list it produced.</p>
+<p>Some comments:</p>
+<ol>
+<li>Brand extraction seems not supported in 4.0, requires 3.2 and does not seem very reliable.</li>
+<li>Possible to train model with own brands</li>
+<li>Do not use blob urls with SAS - you will get a misleading error message (wrong API key or API version)</li>
+<li>There are two Vision services exposed in the market place: Custom Vision and Azure Vision. The former allows model training. Same API.</li>
+</ol>
+<p>(Number is captioned object area * (1 + recognition confidence))</p>
+<h3 id="-image-1-https-i-etsystatic-com-51286668-r-il-27eaed-6014488641-il_1588xn-6014488641_bybu-jpg-"><a href="https://i.etsystatic.com/51286668/r/il/27eaed/6014488641/il_1588xN.6014488641_bybu.jpg">Image 1</a></h3>
+<ul>
+<li>3540664.4424562454 a white t-shirt with a logo on it</li>
+<li>3323911.0958576202 a white shirt with a logo on it</li>
+<li>1638713.3676481247 a white t-shirt with a logo on it</li>
+<li>84935.92342960835 a close up of a logo</li>
+<li>52640.99776518345 a wooden object with a black background</li>
+<li>47312.44461965561 a close-up of a sign</li>
+<li>22299.354930639267 a close up of a sign</li>
+<li>21066.452381253242 a close up of a colorful square</li>
+<li>9098.866596221924 a blue square with black lines</li>
+<li>8100.673599243164 a close up of an orange square</li>
+</ul>
+<h3 id="-image-2-https-mobileimages-lowes-com-productimages-cf75cdca-e41f-42f6-857f-aa49a5b10675-12161585-jpg-"><a href="https://mobileimages.lowes.com/productimages/cf75cdca-e41f-42f6-857f-aa49a5b10675/12161585.jpg">Image 2</a></h3>
+<ul>
+<li>1749111.6523742676 a can of paint with a white label</li>
+<li>1163405.9780507088 a can of paint with a label</li>
+<li>158812.61454582214 a close-up of a silver plate</li>
+<li>81225.97669053078 a close up of a logo</li>
+<li>65803.13216209412 a close up of a sign</li>
+<li>46963.74707400799 a blue letter on a white surface</li>
+<li>34378.030671179295 a blue shield with white text</li>
+<li>32410.553058743477 a close up of a label</li>
+<li>10311.295795440674 a blue sign with white letters</li>
+<li>8493.588054478168 a letter on a white surface</li>
+</ul>
+<h3 id="-image-3-https-cdnimg-webstaurantstore-com-images-products-large-758110-2572441-jpg-"><a href="https://cdnimg.webstaurantstore.com/images/products/large/758110/2572441.jpg">Image 3</a></h3>
+<ul>
+<li>656463.189125061 a screwdriver with yellow handle</li>
+<li>507116.565787375 a screwdriver with a yellow handle</li>
+</ul>
+<h3 id="-image-4-https-cdnimg-webstaurantstore-com-images-products-large-568760-2638325-jpg-"><a href="https://cdnimg.webstaurantstore.com/images/products/large/568760/2638325.jpg">Image 4</a></h3>
+<ul>
+<li>621655.7550430298 a blue machine with a fan</li>
+<li>518628.0614397526 a blue fan with a black circle</li>
+<li>99585.67106813192 a blue box with metal grate</li>
+<li>93088.14066690207 a close-up of a vent</li>
+</ul>
