@@ -1,14 +1,14 @@
 {
-    "@odata.context": "https://mrsearch2.search.windows.net/$metadata#datasources/$entity",
-    "@odata.etag": "\"0x8DC59AEA85B6E01\"",
-    "name": "html-datasource",
-    "description": "Sample documents about world deserts.",
-    "type": "azureblob",
-    "credentials": {
-        "connectionString": "ResourceId=/subscriptions/7cee9002-39e6-44f8-a673-6f8680f8f4ad/resourceGroups/AI/providers/Microsoft.Storage/storageAccounts/mraidata/blobServices/default"
-    },
-    "container": {
-        "name": "specs",
-        "query": null
-    }
+  "@odata.context": "https://mrsearch2.search.windows.net/$metadata#datasources/$entity",
+  "@odata.etag": "\"0x8DC59AEA85B6E01\"",
+  "name": "html-datasource",
+  "description": "Sample html documents.",
+  "type": "azureblob",
+  "credentials": {
+    "connectionString": "ResourceId=/subscriptions/7cee9002-39e6-44f8-a673-6f8680f8f4ad/resourceGroups/AI/providers/Microsoft.Storage/storageAccounts/mraidata/blobServices/default"
+  },
+  "container": {
+    "name": "specs",
+    "query": null
+  }
 }

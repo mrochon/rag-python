@@ -26,6 +26,11 @@
           "name": "base64Encode",
           "parameters": null
         }
+      },
+      {
+        "sourceFieldName": "title",
+        "targetFieldName": "title",
+        "mappingFunction": null
       }
     ],
     "encryptionKey": null

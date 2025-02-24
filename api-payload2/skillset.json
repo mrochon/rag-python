@@ -2,7 +2,7 @@
   "@odata.context": "https://SEARCH_SERVICE_NAME.search.windows.net/$metadata#skillsets/$entity",
   "@odata.etag": "\"0x8DC59DAEE959E97\"",
   "name": "SKILLSET_NAME",
-  "description": "Basic html text",
+  "description": "Created from json edit",
   "skills": [
     {
       "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
@@ -11,8 +11,8 @@
       "context": "/document",
       "defaultLanguageCode": "en",
       "textSplitMode": "pages",
-      "maximumPageLength": 400,
-      "pageOverlapLength": 100,
+      "maximumPageLength": 1000,
+      "pageOverlapLength": 450,
       "maximumPagesToTake": 0,
       "inputs": [
         {
@@ -28,6 +28,35 @@
       ]
     },
     {
+      "@odata.type": "#Microsoft.Skills.Text.PIIDetectionSkill",
+      "name": "#2",
+      "description": null,
+      "context": "/document/chunks/*",
+      "defaultLanguageCode": "en",
+      "minimumPrecision": 0.7,
+      "maskingMode": "replace",
+      "maskingCharacter": "*",
+      "modelVersion": null,
+      "piiCategories": ["person"],
+      "domain": "none",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/chunks/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "piiEntities",
+          "targetName": "pii_entities"
+        },
+        {
+          "name": "maskedText",
+          "targetName": "masked_text"
+        }
+      ]
+    },
+    {
       "@odata.type": "#Microsoft.Skills.Text.AzureOpenAIEmbeddingSkill",
       "name": "#3",
       "description": null,
@@ -35,7 +64,7 @@
       "resourceUri": "AZURE_OPENAI_ENDPOINT",
       "apiKey": "OPENAI_API_KEY",
       "deploymentId": "EMBEDDINGS_MODEL",
-      "modelName": "EMBEDDINGS_MODEL",
+      "modelName": "text-embedding-ada-002",
       "inputs": [
         {
           "name": "text",
@@ -48,7 +77,7 @@
           "targetName": "vector"
         }
       ],
-      "authResourceId": "AZURE_SEARCH_MANAGED_IDENTITY_ID"
+      "authIdentity": null
     }
   ],
   "indexProjections": {
@@ -69,6 +98,18 @@
                 {
                     "name": "chunkVector",
                     "source": "/document/chunks/*/vector"
+                },
+                {
+                    "name": "pii_entities",
+                    "source": "/document/chunks/*/pii_entities"
+                },
+                {
+                    "name": "masked_text",
+                    "source": "/document/chunks/*/masked_text"
+                },
+                {
+                    "name": "title",
+                    "source": "/document/title"
                 }
             ]
         }

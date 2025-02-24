@@ -44,7 +44,9 @@
       "indexAnalyzer": null,
       "searchAnalyzer": null,
       "analyzer": "standard.lucene",
-      "synonymMaps": []
+      "synonymMaps": [
+        "SYNONYM_MAP_NAME"
+      ]
     },
     {
       "name": "uri",
@@ -61,6 +63,16 @@
       "synonymMaps": []
     },
     {
+      "name": "title",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": true,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false
+    },    
+    {
       "name": "metadata_creation_date",
       "type": "Edm.DateTimeOffset",
       "searchable": false,
@@ -72,6 +84,110 @@
       "indexAnalyzer": null,
       "searchAnalyzer": null,
       "analyzer": null,
+      "synonymMaps": []
+    },
+    {
+      "name": "pii_entities",
+      "type": "Collection(Edm.ComplexType)",
+      "fields": [
+        {
+          "name": "text",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": "standard.lucene",
+          "synonymMaps": []
+        },
+        {
+          "name": "type",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": "standard.lucene",
+          "synonymMaps": []
+        },
+        {
+          "name": "subtype",
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": "standard.lucene",
+          "synonymMaps": []
+        },
+        {
+          "name": "offset",
+          "type": "Edm.Int32",
+          "searchable": false,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+                      "synonymMaps": []
+        },
+        {
+          "name": "length",
+          "type": "Edm.Int32",
+          "searchable": false,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+                      "synonymMaps": []
+        },
+        {
+          "name": "score",
+          "type": "Edm.Double",
+          "searchable": false,
+          "filterable": false,
+          "retrievable": true,
+          "sortable": false,
+          "facetable": false,
+          "key": false,
+          "indexAnalyzer": null,
+          "searchAnalyzer": null,
+          "analyzer": null,
+          "synonymMaps": []
+        }
+      ]
+    },
+    {
+      "name": "masked_text",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": null,
+      "searchAnalyzer": null,
+      "analyzer": "standard.lucene",
       "synonymMaps": []
     },
     {
@@ -90,6 +206,16 @@
       "vectorSearchProfile": "profile",
       "synonymMaps": []
     }
+  ],
+  "scoringProfiles": [
+    {  
+      "name":"desertName",
+      "text": {  
+        "weights": {  
+          "title": 5
+        }                              
+      } 
+    } 
   ],
   "corsOptions": null,
   "suggesters": [],
@@ -151,8 +277,8 @@
         "azureOpenAIParameters": {
           "resourceUri": "AZURE_OPENAI_ENDPOINT",
           "deploymentId": "EMBEDDINGS_MODEL",
-          "modelName": "EMBEDDINGS_MODEL",
-          "apiKey": null,
+          "modelName": "text-embedding-ada-002",
+          "apiKey": "OPENAI_API_KEY",
           "authIdentity": null
         },
         "customWebApiParameters": null
